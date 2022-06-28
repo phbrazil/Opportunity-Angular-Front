@@ -12,7 +12,8 @@
         <a *ngIf="plan?.enableRefund" class="nav-item nav-link" routerLink="/refund">Reembolso</a>
         <a class="nav-item nav-link" routerLink="/reports">Relatórios</a>
         <a class="nav-item nav-link end" routerLink="/manage">
-          <fa-icon class="fa" [icon]="faUser"></fa-icon> {{name}}
+          <img *ngIf="settings" class="img-fluid icon-image" src="{{base64 + settings.profileImage}}" width="25" height="25" alt="profile" />
+          <!--fa-icon class="fa" [icon]="faUser"></fa-icon--> {{name}}
         </a>
       </div>
     </div>

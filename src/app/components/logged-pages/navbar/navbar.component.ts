@@ -27,6 +27,8 @@ export class NavbarComponent implements OnInit {
 
   settings: Settings;
 
+  fileType: string = 'png';
+  base64: string = "data:image/" + this.fileType + ";base64,";
 
   constructor(private accountService: AccountService,
     private planService: PlanService,

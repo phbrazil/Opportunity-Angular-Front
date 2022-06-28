@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   profileImage: string;
   fileType: string = 'png';
   base64: string = "data:image/" + this.fileType + ";base64,";
+  isAllowFileSize: boolean = true;
 
   settings: Settings;
 
@@ -129,7 +130,22 @@ export class ProfileComponent implements OnInit {
       this.profileImage = this.profileImage.replace("data:image/png;base64,", "");
       this.settings.profileImage = this.profileImage;
 
-      console.log(reader.result);
+      if (file.size > 100000) {
+
+        console.log(reader.result);
+
+        this.settings.profileImage = '';
+
+        this.isAllowFileSize = false;
+
+        return false;
+
+      } else {
+
+        this.isAllowFileSize = true;
+
+      }
+
     };
   }
 
