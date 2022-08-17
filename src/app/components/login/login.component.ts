@@ -120,7 +120,7 @@ export class LoginComponent implements OnInit {
 
       if (x) {
         this.settingsService.getSettings(x.idUser, this.accountService.getToken()).subscribe(res => {
-          this.settings = res;
+          this.settingsService.setSettings(res);
           this.isLoading = false;
         }, _err => {
 
