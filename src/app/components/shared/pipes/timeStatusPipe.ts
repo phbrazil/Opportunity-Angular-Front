@@ -10,10 +10,10 @@ export class TimeStatusPipe implements PipeTransform {
 
   transform(value: ChangeStatusEnum): any {
 
-    if(value == ChangeStatusEnum.open ){
-      return "Aberto";
-    }else{
+    if(value == ChangeStatusEnum.paid ){
       return "Pago";
+    }else{
+      return "Aberto";
     }
   }
 }
