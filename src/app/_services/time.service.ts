@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
-import { TimeTask } from '../_models/time-task';
+import { ChangeStatus, TimeTask } from '../_models/time-task';
 import { Constants } from '../components/shared/utils/Constants';
 @Injectable({ providedIn: 'root' })
 export class TimeService {
@@ -105,6 +105,18 @@ export class TimeService {
     const url = `${this.baseUrl}/time/deleteEntry/${idTask}`
 
     return this.http.delete<[any]>(url, header);
+  }
+
+  changeStatus(tasks: ChangeStatus[], idUser: number, token: string ) {
+
+    var header = {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+    }
+
+    const url = `${this.baseUrl}/time/changeStatus/${idUser}`
+
+    return this.http.patch<any>(url, tasks, header);
   }
 
   checkTime(time: any) {

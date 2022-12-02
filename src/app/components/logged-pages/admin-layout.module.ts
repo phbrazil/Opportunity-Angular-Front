@@ -48,6 +48,7 @@ import { InitialSetupComponent } from './initial-setup/initial-setup.component';
 import { ExpiredComponent } from './manage/plan-account/expired/expired.component';
 import { DeleteCardComponent } from './manage/plan-account/new-card/delete-card/delete-card.component';
 import { ConfirmCancelSubscribeComponent } from './manage/plan-account/confirm-cancel-subscribe/confirm-cancel-subscribe.component';
+import { PipesModule } from '../shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { ConfirmCancelSubscribeComponent } from './manage/plan-account/confirm-c
     FontAwesomeModule,
     AngularMaterialModule,
     NgbDatepickerModule,
-    NgSelectModule
+    NgSelectModule,
+    PipesModule
   ], exports: [
     NavbarComponent,
     TimeComponent,
@@ -108,6 +110,9 @@ import { ConfirmCancelSubscribeComponent } from './manage/plan-account/confirm-c
     LoggedFooterComponent,
 
   ],
+  providers:[
+
+  ]
 })
 export class AdminLayoutModule {
 

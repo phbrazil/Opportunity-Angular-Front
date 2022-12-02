@@ -84,6 +84,7 @@ const materialModules = [
     MatButtonToggleModule,
     MatFormFieldModule,
     MatNativeDateModule,
+    MatCheckboxModule
   ],
 })
 export class AngularMaterialModule { }

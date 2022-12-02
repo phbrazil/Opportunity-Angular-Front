@@ -16,6 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { WorkingProgressComponent } from './working-progress/working-progress.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatProgressButtonsModule } from 'mat-progress-buttons';
+import { PipesModule } from './pipes/pipes.module';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -41,7 +42,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     NgxCurrencyModule,
     MatTooltipModule,
     FontAwesomeModule,
-    MatProgressButtonsModule.forRoot()
+    MatProgressButtonsModule.forRoot(),
+    PipesModule
   ],
 
   exports: [
@@ -57,7 +59,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     WorkingProgressComponent,
     AngularMaterialModule,
     FontAwesomeModule,
-    MatProgressButtonsModule
+    MatProgressButtonsModule,
+    PipesModule
   ]
 })
 export class SharedModule {

@@ -1,5 +1,12 @@
 <a [ngClass]="size">
-  <h4 style="margin-top: -5px;"><strong>#{{task.project}}</strong></h4>
+  <div class="row">
+    <div class="col-md-8">
+      <h4 style="margin-top: -5px;"><strong>#{{task.project}}</strong></h4>
+    </div>
+    <div class="col-md-4">
+      <mat-checkbox color="accent" [checked]="task.status == 'paid' ? true : false" (change)="changeStatus(task.idTask, $event)">{{task.status | translateTimeStatus}}</mat-checkbox>
+    </div>
+  </div>
   <p>#{{task.task}}</p>
   <p>#{{task.time}}</p>
   <p *ngIf="showDate"><strong>#{{task.date}}</strong></p>
