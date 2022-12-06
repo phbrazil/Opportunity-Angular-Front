@@ -61,8 +61,10 @@
   </div>
 </form>
 
-<div *ngIf="isLoading" class="col-md-12 center" style="margin-top: 100px;">
-  <app-spinner-loader></app-spinner-loader>
+<div *ngIf="isLoading" class="col-md-12" >
+  <div class="center" style="margin: 100px;">
+    <app-spinner-loader [size]="'medium'"></app-spinner-loader>
+  </div>
 </div>
 
 <div *ngIf="!isLoading && tasks.length == 0 && !isModalCalendar" class="col-md-12 mt-4">

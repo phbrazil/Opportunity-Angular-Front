@@ -8,7 +8,7 @@ import { ChangeStatusEnum } from "src/app/_models/time-task";
 export class TimeStatusPipe implements PipeTransform {
   constructor() {}
 
-  transform(value: ChangeStatusEnum): any {
+ public transform(value: ChangeStatusEnum): any {
 
     if(value == ChangeStatusEnum.paid ){
       return "Pago";

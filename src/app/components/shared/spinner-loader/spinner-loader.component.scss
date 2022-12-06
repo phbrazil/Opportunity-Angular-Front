@@ -4,6 +4,21 @@
   padding: 10px;
 }
 
-.spinner{
-  width: 8rem; height: 8rem; margin-top: 10px;
+.large{
+  width: 8rem;
+  height: 8rem;
+  position: absolute;
+}
+
+.small{
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+
+}
+
+.medium{
+  width: 4rem;
+  height: 4rem;
+  position: absolute;
 }

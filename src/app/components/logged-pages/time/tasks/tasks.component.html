@@ -4,7 +4,12 @@
       <h4 style="margin-top: -5px;"><strong>#{{task.project}}</strong></h4>
     </div>
     <div class="col-md-4">
-      <mat-checkbox color="accent" [checked]="task.status == 'paid' ? true : false" (change)="changeStatus(task.idTask, $event)">{{task.status | translateTimeStatus}}</mat-checkbox>
+      <ng-container *ngIf="!isLoading; else loading">
+        <mat-checkbox color="accent" [checked]="task.status == 'paid' ? true : false" (change)="changeStatus(task.idTask, $event)">{{task.status | translateTimeStatus}}</mat-checkbox>
+      </ng-container>
+      <ng-template  #loading>
+          <app-spinner-loader [size]="'small'"></app-spinner-loader>
+      </ng-template>
     </div>
   </div>
   <p>#{{task.task}}</p>

@@ -19,6 +19,8 @@ export class TasksComponent implements OnInit {
   @Input() showDate: boolean = false;
   @Input() size: string = '';
 
+  public isLoading: boolean = false;
+
   constructor(public dialog: MatDialog, private readonly timeService: TimeService, private readonly accountService: AccountService) {
 
     this.accountService.user.subscribe(x => this.user = x);
@@ -53,6 +55,7 @@ export class TasksComponent implements OnInit {
   }
 
   changeStatus(idTask: number, event: any){
+    this.isLoading = true;
 
     let changeStatus = {
       status: event.checked? ChangeStatusEnum.paid : ChangeStatusEnum.open,
@@ -64,11 +67,11 @@ export class TasksComponent implements OnInit {
     list.push(changeStatus);
 
     this.timeService.changeStatus(list,this.user.idUser, this.accountService.getToken()).subscribe(res =>{
-      console.log(res);
       this.task.status = changeStatus.status;
+      this.isLoading = false;
 
     }, err =>{
-      console.log(err)
+        this.isLoading = false;
     })
 
   }

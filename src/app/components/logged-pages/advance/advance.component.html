@@ -6,10 +6,13 @@
           <fa-icon class="fa" [icon]="faPlus"></fa-icon> Novo Adiantamento
         </button>
       </div>
+      <div *ngIf="isLoading" class="col-md-12" >
+        <div class="center" style="margin: 100px;">
+          <app-spinner-loader [size]="'medium'"></app-spinner-loader>
+        </div>
+      </div>
     </div>
-    <div *ngIf="isLoading">
-      <app-spinner-loader></app-spinner-loader>
-    </div>
+
 
     <div *ngIf="!isLoading && advances.length == 0">
       <app-no-register-found></app-no-register-found>
