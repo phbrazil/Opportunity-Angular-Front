@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ChangeStatus, ChangeStatusEnum, TimeTask } from 'src/app/_models/time-task';
 import { User } from 'src/app/_models/user';
@@ -18,6 +19,17 @@ export class TasksComponent implements OnInit {
   @Input() disableButtons: boolean = false;
   @Input() showDate: boolean = false;
   @Input() size: string = '';
+
+  public check: Check = {
+    name: 'Indeterminate',
+    completed: false,
+    color: 'warn',
+    subchecks: [
+      {name: 'Primary', completed: false, color: 'primary'},
+      {name: 'Accent', completed: false, color: 'accent'},
+      {name: 'Warn', completed: false, color: 'warn'},
+    ],
+  };
 
   public isLoading: boolean = false;
 
@@ -58,7 +70,7 @@ export class TasksComponent implements OnInit {
     this.isLoading = true;
 
     let changeStatus = {
-      status: event.checked? ChangeStatusEnum.paid : ChangeStatusEnum.open,
+      status: event.target.checked? ChangeStatusEnum.paid : ChangeStatusEnum.open,
       idTask: idTask
     } as ChangeStatus;
 
@@ -69,12 +81,23 @@ export class TasksComponent implements OnInit {
     this.timeService.changeStatus(list,this.user.idUser, this.accountService.getToken()).subscribe(res =>{
       this.task.status = changeStatus.status;
       this.isLoading = false;
-
     }, err =>{
         this.isLoading = false;
     })
 
   }
 
+  public isChecked(task: TimeTask): boolean{
+    console.log(task);
+   return task.status == 'paid' ? true : false
+  }
 
+
+}
+
+export interface Check {
+  name: string;
+  completed: boolean;
+  color: ThemePalette;
+  subchecks?: Check[];
 }

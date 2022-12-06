@@ -4,8 +4,23 @@
       <h4 style="margin-top: -5px;"><strong>#{{task.project}}</strong></h4>
     </div>
     <div class="col-md-4">
-      <ng-container *ngIf="!isLoading; else loading">
-        <mat-checkbox color="accent" [checked]="task.status == 'paid' ? true : false" (change)="changeStatus(task.idTask, $event)">{{task.status | translateTimeStatus}}</mat-checkbox>
+      <ng-container>
+        <!--div class="col-md-12">
+            <mat-checkbox color="check.color" [checked]="task.status == 'paid' ? true : false" (change)="changeStatus(task.idTask, $event)"></mat-checkbox>
+        </div>
+        <div class="col-md-12">
+          {{task.status | translateTimeStatus}}
+        </div-->
+
+          <!-- Toggle Button Style 1 -->
+          <label class="toggler-wrapper style-1">
+            <input type="checkbox" (change)="changeStatus(task.idTask, $event)" [checked]="isChecked(task)" >
+            <div class="toggler-slider">
+              <div class="toggler-knob"></div>
+            </div>
+          </label>
+          <!-- End Toggle Button Style 1 -->
+          <div class="badge">{{task.status | translateTimeStatus}}</div>
       </ng-container>
       <ng-template  #loading>
           <app-spinner-loader [size]="'small'"></app-spinner-loader>
