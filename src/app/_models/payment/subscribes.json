@@ -1,0 +1,191 @@
+{
+  "paging": {
+    "total": 5,
+    "offset": 0,
+    "limit": 10
+  },
+  "results": [
+    {
+      "reason": "ASSINATURA TESTE PROD 1 REAL",
+      "date_created": "2022-06-01T03:01:41.634-04:00",
+      "back_url": "https://www.getopportunity.com.br",
+      "payer_last_name": "bezerra",
+      "summarized": {
+        "quotas": 12,
+        "charged_amount": 10,
+        "last_charged_date": "2022-06-10T05:01:29.315-04:00",
+        "semaphore": "green",
+        "pending_charge_amount": 110,
+        "charged_quantity": 2,
+        "pending_charge_quantity": 10,
+        "last_charged_amount": 10
+      },
+      "application_id": 3920929724708463,
+      "payment_method_id": "master",
+      "preapproval_plan_id": "2c93808480fe342801811df336480d74",
+      "collector_id": 592485468,
+      "external_reference": "YG-1234",
+      "payer_id": 39546728,
+      "id": "2c9380848117bc5501811e11f28402d5",
+      "last_modified": "2022-06-11T21:47:06.722-04:00",
+      "auto_recurring": {
+        "end_date": "2023-06-01T03:01:41.635-04:00",
+        "transaction_amount": 10,
+        "has_billing_day": true,
+        "billing_day_proportional": true,
+        "frequency_type": "months",
+        "billing_day": 10,
+        "currency_id": "BRL",
+        "frequency": 1,
+        "start_date": "2022-06-01T03:01:41.635-04:00"
+      },
+      "status": "cancelled",
+      "payer_first_name": "maria jose"
+    },
+    {
+      "reason": "ASSINATURA TESTE PROD 1 REAL",
+      "date_created": "2022-06-02T13:35:12.070-04:00",
+      "back_url": "https://www.getopportunity.com.br",
+      "payer_last_name": "bezerra",
+      "summarized": {
+        "quotas": 12,
+        "charged_amount": 30.4,
+        "last_charged_date": "2022-06-10T15:20:54.541-04:00",
+        "semaphore": "green",
+        "pending_charge_amount": 257.6,
+        "charged_quantity": 2,
+        "pending_charge_quantity": 10,
+        "last_charged_amount": 24
+      },
+      "application_id": 3920929724708463,
+      "payment_method_id": "master",
+      "preapproval_plan_id": "2c93808480fe342801811df336480d74",
+      "collector_id": 592485468,
+      "external_reference": "idUser: 44",
+      "payer_id": 39546728,
+      "id": "2c93808481249e190181257c4ccb0081",
+      "last_modified": "2022-06-11T23:50:44.483-04:00",
+      "auto_recurring": {
+        "end_date": "2023-06-02T13:35:12.072-04:00",
+        "transaction_amount": 24,
+        "has_billing_day": true,
+        "billing_day_proportional": true,
+        "frequency_type": "months",
+        "billing_day": 10,
+        "currency_id": "BRL",
+        "frequency": 1,
+        "start_date": "2022-06-02T13:35:12.072-04:00"
+      },
+      "status": "cancelled",
+      "payer_first_name": "maria jose"
+    },
+    {
+      "reason": "ASSINATURA TESTE PROD 1 REAL",
+      "date_created": "2022-06-11T23:57:37.287-04:00",
+      "back_url": "https://www.getopportunity.com.br",
+      "payer_last_name": "bezerra",
+      "summarized": {
+        "quotas": 12,
+        "pending_charge_amount": 120,
+        "pending_charge_quantity": 12
+      },
+      "application_id": 3920929724708463,
+      "payment_method_id": "master",
+      "preapproval_plan_id": "2c93808480fe342801811df336480d74",
+      "collector_id": 592485468,
+      "external_reference": "idUser: 44",
+      "payer_id": 39546728,
+      "id": "2c938084813ff7860181560f60890a51",
+      "last_modified": "2022-06-12T00:14:01.225-04:00",
+      "auto_recurring": {
+        "end_date": "2023-06-11T23:57:37.287-04:00",
+        "transaction_amount": 10,
+        "has_billing_day": true,
+        "billing_day_proportional": true,
+        "frequency_type": "months",
+        "billing_day": 10,
+        "currency_id": "BRL",
+        "frequency": 1,
+        "start_date": "2022-06-11T23:57:37.287-04:00"
+      },
+      "status": "cancelled",
+      "payer_first_name": "maria jose"
+    },
+    {
+      "reason": "ASSINATURA TESTE PROD 1 REAL",
+      "date_created": "2022-06-12T00:18:38.826-04:00",
+      "back_url": "https://www.getopportunity.com.br",
+      "payer_last_name": "bezerra",
+      "summarized": {
+        "quotas": 12,
+        "charged_amount": 9.67,
+        "last_charged_date": "2022-06-12T02:09:27.792-04:00",
+        "semaphore": "green",
+        "pending_charge_amount": 110.33,
+        "charged_quantity": 1,
+        "pending_charge_quantity": 11,
+        "last_charged_amount": 9.67
+      },
+      "application_id": 3920929724708463,
+      "payment_method_id": "master",
+      "preapproval_plan_id": "2c93808480fe342801811df336480d74",
+      "collector_id": 592485468,
+      "external_reference": "idUser: 44",
+      "payer_id": 39546728,
+      "id": "2c938084813ff7c601815622a06d0a65",
+      "last_modified": "2022-06-13T19:31:39.991-04:00",
+      "auto_recurring": {
+        "end_date": "2023-06-12T00:18:38.827-04:00",
+        "transaction_amount": 10,
+        "has_billing_day": true,
+        "billing_day_proportional": true,
+        "frequency_type": "months",
+        "billing_day": 10,
+        "currency_id": "BRL",
+        "frequency": 1,
+        "start_date": "2022-06-12T00:18:38.827-04:00"
+      },
+      "status": "cancelled",
+      "payer_first_name": "maria jose"
+    },
+    {
+      "reason": "ASSINATURA TESTE PROD 1 REAL",
+      "date_created": "2022-06-11T23:42:24.296-04:00",
+      "back_url": "https://www.getopportunity.com.br",
+      "payer_last_name": "bezerra",
+      "summarized": {
+        "quotas": 12,
+        "charged_amount": 50,
+        "last_charged_date": "2022-12-11T01:11:25.707-04:00",
+        "semaphore": "green",
+        "pending_charge_amount": 70,
+        "charged_quantity": 7,
+        "pending_charge_quantity": 5,
+        "last_charged_amount": 10
+      },
+      "application_id": 3920929724708463,
+      "next_payment_date": "2023-01-10T23:42:24.000-04:00",
+      "init_point": "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_id=2c938084813ff78601815601722a0a4c",
+      "payment_method_id": "master",
+      "preapproval_plan_id": "2c93808480fe342801811df336480d74",
+      "collector_id": 592485468,
+      "external_reference": "idUser: 44",
+      "payer_id": 39546728,
+      "id": "2c938084813ff78601815601722a0a4c",
+      "last_modified": "2022-12-13T13:11:37.750-04:00",
+      "auto_recurring": {
+        "end_date": "2023-06-11T23:42:24.296-04:00",
+        "transaction_amount": 10,
+        "has_billing_day": true,
+        "billing_day_proportional": true,
+        "frequency_type": "months",
+        "billing_day": 10,
+        "currency_id": "BRL",
+        "frequency": 1,
+        "start_date": "2022-06-11T23:42:24.296-04:00"
+      },
+      "status": "authorized",
+      "payer_first_name": "maria jose"
+    }
+  ]
+}
