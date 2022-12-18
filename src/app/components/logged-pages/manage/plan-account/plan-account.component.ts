@@ -9,7 +9,7 @@ import { PlanService } from 'src/app/_services/plan.service';
 import { TeamService } from 'src/app/_services/team.service';
 import { ChangePlanComponent } from './change-plan/change-plan.component';
 import { ConfirmCancelSubscribeComponent } from './confirm-cancel-subscribe/confirm-cancel-subscribe.component';
-import { DeleteCardComponent } from './new-card/delete-card/delete-card.component';
+import { DeleteCardComponent } from './cards/delete-card/delete-card.component';
 
 @Component({
   selector: 'app-plan-account',
@@ -41,7 +41,7 @@ export class PlanAccountComponent implements OnInit {
     this.planService.getIsReload().subscribe(res =>{
       console.log(res);
       if(res){
-        this.loadActiveMembers();
+        //this.loadActiveMembers();
         //this.loadPlan();
         //this.loadCard();
       }

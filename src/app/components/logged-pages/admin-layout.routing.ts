@@ -19,6 +19,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'manage', component: ManageComponent },
     { path: 'reports', component: ReportsComponent },
     { path: 'setup', component: InitialSetupComponent },
+    //    { path: 'setup', component: StepperCreateAccountComponent },
     { path: 'expired', component: ExpiredComponent },
     //{ path: 'profile', component: ProfileComponent },
     { path: '**', component: TimeComponent },

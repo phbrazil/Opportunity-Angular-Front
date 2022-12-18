@@ -19,20 +19,20 @@
         <tbody>
           <tr>
             <td>Solicitar aprovação para adiantamentos</td>
-            <td><a href="javascript:void(0)" (click)="changeRequestApprovalAdvance()">{{settings.advanceRequestApproval
+            <td><a href="javascript:void(0)" (click)="changeRequestApprovalAdvance()">{{settings?.advanceRequestApproval
                 ? 'Sim' : 'Não'}}</a></td>
           </tr>
           <tr>
             <td>Email(s) para enviar notificações de novo adiantamento</td>
-            <td>{{settings.emailsAdvanceNotify}}</td>
+            <td>{{settings?.emailsAdvanceNotify}}</td>
           </tr>
           <tr>
             <td>Dias para enviar alerta de prestação de contas</td>
-            <td>{{settings.advanceAlertDays}}</td>
+            <td>{{settings?.advanceAlertDays}}</td>
           </tr>
           <tr>
             <td>Máximo de adiantamentos abertos que o usuário solicita por vez</td>
-            <td>{{settings.maxOpenAdvance}}</td>
+            <td>{{settings?.maxOpenAdvance}}</td>
           </tr>
         </tbody>
       </table>
@@ -51,16 +51,16 @@
         <tbody>
           <tr>
             <td>Solicitar aprovação para reembolsos</td>
-            <td><a href="javascript:void(0)" (click)="changeRequestApprovalRefund()">{{settings.refundRequestApproval ?
+            <td><a href="javascript:void(0)" (click)="changeRequestApprovalRefund()">{{settings?.refundRequestApproval ?
                 'Sim' : 'Não'}}</a></td>
           </tr>
           <tr>
             <td>Email(s) para enviar notificações de novo reebolso</td>
-            <td>{{settings.emailsRefundNotify}}</td>
+            <td>{{settings?.emailsRefundNotify}}</td>
           </tr>
           <tr>
             <td>Máximo de reembolsos abertos que o usuário solicita por vez</td>
-            <td>{{settings.maxOpenRefund}}</td>
+            <td>{{settings?.maxOpenRefund}}</td>
           </tr>
         </tbody>
       </table>
@@ -79,12 +79,12 @@
         <tbody>
           <tr>
             <td>Solicitar aprovação semanal</td>
-            <td><a href="javascript:void(0)" (click)="changeWeekApprovalTime()">{{settings.timeRequestApproval ? 'Sim' :
+            <td><a href="javascript:void(0)" (click)="changeWeekApprovalTime()">{{settings?.timeRequestApproval ? 'Sim' :
                 'Não'}}</a></td>
           </tr>
           <tr>
             <td>Dias para enviar alerta de preenchimento do tempo</td>
-            <td>{{settings.timeAlertDays}}</td>
+            <td>{{settings?.timeAlertDays}}</td>
           </tr>
         </tbody>
       </table>

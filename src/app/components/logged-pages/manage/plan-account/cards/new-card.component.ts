@@ -10,6 +10,7 @@ declare var MercadoPago: any;
 import { formatCurrency, getCurrencySymbol } from '@angular/common';
 import { faAngleRight, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { Plan } from 'src/app/_models/plan';
+import { PlanService } from 'src/app/_services/plan.service';
 
 
 @Component({
@@ -60,7 +61,7 @@ export class NewCardComponent implements OnInit {
 
   constructor(private accountService: AccountService, private matDialog: MatDialog,
     private router: Router, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any,
-    private alertService: AlertService,
+    private alertService: AlertService, private planService: PlanService,
     @Inject(LOCALE_ID) private locale: string) {
 
     this.accountService.user.subscribe(x => this.user = x);
@@ -170,7 +171,9 @@ export class NewCardComponent implements OnInit {
 
     this.matDialog.closeAll();
 
-    this.router.navigate(['/manage'])
+    //this.planService.setIsReload(false);
+
+    //this.router.navigate(['/manage'])
 
 
   }
@@ -253,10 +256,7 @@ export class NewCardComponent implements OnInit {
           console.log(identificationNumberFormat);
 
 
-          //fetch(Constants.baseUrl + "/opportunity/payment/process_payment", {
-          //fetch("/process_payment", {
           fetch(Constants.baseUrl + "/opportunity/payment/subscribe_plan", {
-            //fetch("/subscribe_plan", {
             method: "POST",
             mode: 'cors',
             headers: {

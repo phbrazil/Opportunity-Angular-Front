@@ -9,7 +9,7 @@ import { AccountService } from 'src/app/_services/account.service';
 import { CardService } from 'src/app/_services/card.service';
 import { PlanService } from 'src/app/_services/plan.service';
 import { TeamService } from 'src/app/_services/team.service';
-import { NewCardComponent } from '../new-card/new-card.component';
+import { NewCardComponent } from '../cards/new-card.component';
 import { formatCurrency, getCurrencySymbol } from '@angular/common';
 import { AlertService } from 'src/app/_services/alert.service';
 import { Router } from '@angular/router';

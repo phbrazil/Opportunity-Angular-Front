@@ -1,0 +1,100 @@
+<div class="col-md-12 mt-4">
+  <div class="navbar-adjust">
+    <h6 class="u-text u-text-1 text-muted">Ajustes iniciais</h6>
+    <h2 class="u-custom-font u-font-playfair-display u-text u-text-2">Bem-vindo ao <span
+        style="font-weight: 700;">Opportunity!</span>
+    </h2>
+    <p class="u-text u-text-3">Para iniciar o uso da nossa ferramenta precisamos saber alguns
+      detalhes
+      sobre suas atividades</p>
+
+    <div *ngIf="!completed; else finished">
+      <mat-horizontal-stepper [linear]="isLinear" #stepper StepState="'completed'" labelPosition="bottom">
+        <mat-step [editable]="true" state="chat" [stepControl]="formNameGroup" label="Projeto"
+          [completed]="formNameGroup.valid">
+          <div style="padding-top: 3%;">
+            <form [formGroup]="formNameGroup">
+              <label class="font-home text-muted" style="font-size: 20px;">Qual o nome do projeto que está atuando no
+                momento?</label>
+              <div class="example-form">
+                <mat-form-field class="example-full-width">
+                  <input matInput [(ngModel)]="name" placeholder="Nome do Projeto" required formControlName="name">
+                  <mat-error *ngIf="formNameGroup.controls['name'].hasError('required')">
+                    Projeto necessário!
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <br />
+              <button mat-raised-button color="primary" matStepperNext>Avançar</button>
+            </form>
+          </div>
+        </mat-step>
+
+        <mat-step [stepControl]="formTaskGroup" state="chat" label="Tarefa">
+          <div style="padding-top: 3%;">
+            <form [formGroup]="formTaskGroup">
+              <label class="font-home text-muted" style="font-size: 20px;">No Projeto {{name}}, qual sua principal
+                atividade?</label>
+              <div class="example-form">
+                <mat-form-field class="example-full-width">
+                  <input type="text" [(ngModel)]="task" matInput placeholder="Tarefa" required formControlName="task">
+                  <mat-error *ngIf="formTaskGroup.controls['task'].hasError('required')">
+                    Tarefa é necessária!
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <br />
+              <button mat-raised-button color="primary" matStepperNext>Avançar</button>
+            </form>
+          </div>
+        </mat-step>
+
+        <mat-step [stepControl]="formBudgetGroup" state="chat" label="Budget">
+          <div style="padding-top: 3%;">
+            <form [formGroup]="formBudgetGroup">
+              <label class="font-home text-muted" style="font-size: 20px;">Qual o budget do projeto
+                <strong>{{name}}?</strong><small class="text-muted"> Deixar 0 caso não possua</small>
+              </label>
+              <div class="example-form">
+                <mat-form-field class="example-full-width">
+                  <input type="text" [(ngModel)]="budget" matInput placeholder="Budget" required
+                    formControlName="budget">
+                  <mat-error *ngIf="formBudgetGroup.controls['budget'].hasError('required')">
+                    Budget é necessário!
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <br />
+              <button mat-raised-button color="primary" matStepperNext>Avançar</button>
+            </form>
+          </div>
+        </mat-step>
+
+        <mat-step>
+          <ng-template matStepLabel>Revisar</ng-template>
+          <p class="u-text u-text-3">Confirme os dados abaixo antes de Finalizar:</p>
+          <div>
+            <button mat-raised-button color="primary" matStepperPrevious>Voltar</button> &nbsp; &nbsp;
+            <button (click)="finish()" [disabled]="isLoading" mat-raised-button color="accent" type="submit">
+              <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+              Finalizar</button> &nbsp; &nbsp;
+            <button mat-raised-button color="warn" (click)="stepper.reset()">Redefinir</button>
+          </div>
+        </mat-step>
+
+      </mat-horizontal-stepper>
+    </div>
+
+    <ng-template #finished>
+      <div class="col-12">
+        <fa-icon style="color: green;" class="fa-4x" [icon]="faCheck"></fa-icon>
+        <p class="u-text u-text-3">Tudo pronto! Você pode alterar/adicionar projetos e atividades a qualquer momento
+          no menu Gerenciar.</p>
+        <div class="mt-4">
+          <input type="button" (click)="start()" class="btn-custom-confirm btn-block" value="Começar">
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>

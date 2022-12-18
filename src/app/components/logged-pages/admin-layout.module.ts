@@ -37,7 +37,7 @@ import { NewMemberComponent } from './manage/my-team/new-member/new-member.compo
 import { ProjectReportsComponent } from './reports/project-reports/project-reports.component';
 import { TeamReportsComponent } from './reports/team-reports/team-reports.component';
 import { ChangePlanComponent } from './manage/plan-account/change-plan/change-plan.component';
-import { NewCardComponent } from './manage/plan-account/new-card/new-card.component';
+import { NewCardComponent } from './manage/plan-account/cards/new-card.component';
 import { EditProfileComponent } from './manage/profile/edit-profile/edit-profile.component';
 import { DisableMemberComponent } from './manage/my-team/disable-member/disable-member.component';
 import { EnableMemberComponent } from './manage/my-team/enable-member/enable-member.component';
@@ -46,9 +46,18 @@ import { MoreInfoComponentAdvance } from './advance/more-info-advance/more-info-
 import { ReceiptAdvanceComponent } from './advance/accountability/receipt-advance/receipt-advance.component';
 import { InitialSetupComponent } from './initial-setup/initial-setup.component';
 import { ExpiredComponent } from './manage/plan-account/expired/expired.component';
-import { DeleteCardComponent } from './manage/plan-account/new-card/delete-card/delete-card.component';
+import { DeleteCardComponent } from './manage/plan-account/cards/delete-card/delete-card.component';
 import { ConfirmCancelSubscribeComponent } from './manage/plan-account/confirm-cancel-subscribe/confirm-cancel-subscribe.component';
 import { PipesModule } from '../shared/pipes/pipes.module';
+import { StepperCreateAccountComponent } from './stepper-create-account/stepper-create-account.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -89,7 +98,8 @@ import { PipesModule } from '../shared/pipes/pipes.module';
     InitialSetupComponent,
     ExpiredComponent,
     DeleteCardComponent,
-    ConfirmCancelSubscribeComponent
+    ConfirmCancelSubscribeComponent,
+    StepperCreateAccountComponent
   ],
   imports: [
     RouterModule,
@@ -99,10 +109,20 @@ import { PipesModule } from '../shared/pipes/pipes.module';
     SharedModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FontAwesomeModule,
-    AngularMaterialModule,
     NgbDatepickerModule,
     NgSelectModule,
-    PipesModule
+    PipesModule,
+    //ANGULAR MATERIAL
+    AngularMaterialModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatIconModule,
+    MatCardModule,
+    MatIconModule
+
   ], exports: [
     NavbarComponent,
     TimeComponent,
@@ -110,7 +130,7 @@ import { PipesModule } from '../shared/pipes/pipes.module';
     LoggedFooterComponent,
 
   ],
-  providers:[
+  providers: [
 
   ]
 })
