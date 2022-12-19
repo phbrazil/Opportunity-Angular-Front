@@ -276,6 +276,7 @@ export class NewCardComponent implements OnInit {
               preapproval_plan_id: Constants.preapproval_plan_id,
               payer: {
                 email,
+                cardholderName: this.cardForm.checkout__cardholderName,
                 identification: {
                   type: identificationType,
                   number: identificationNumberFormat,

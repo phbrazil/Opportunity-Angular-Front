@@ -1,7 +1,7 @@
 {
-  "reason": "ASSINATURA TESTE PROD 1 REAL",
+  "reason": "ASSINATURA MENSAL OPPORTUNITY",
   "payer_email": "",
-  "date_created": "2022-12-18T19:35:54.714-04:00",
+  "date_created": "2022-12-18T21:08:07.064-04:00",
   "back_url": "https://www.getopportunity.com.br",
   "summarized": {
     "quotas": 12,
@@ -15,18 +15,18 @@
   },
   "application_id": 3920929724708463,
   "card_id": "9007611698",
-  "next_payment_date": "2022-12-18T19:35:54.000-04:00",
-  "init_point": "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_id=2c938084851aa2e5018527980e5f05e0",
+  "next_payment_date": "2022-12-18T21:08:07.000-04:00",
+  "init_point": "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_id=2c938084851aa321018527ec791f05dd",
   "payment_method_id": "master",
-  "preapproval_plan_id": "2c93808480fe342801811df336480d74",
+  "preapproval_plan_id": "2c938084851aa2d9018527cecaef0599",
   "collector_id": 592485468,
   "external_reference": "idUser: 14",
   "first_invoice_offset": null,
   "payer_id": 39546728,
-  "id": "2c938084851aa2e5018527980e5f05e0",
-  "last_modified": "2022-12-18T19:35:54.961-04:00",
+  "id": "2c938084851aa321018527ec791f05dd",
+  "last_modified": "2022-12-18T21:08:07.342-04:00",
   "auto_recurring": {
-    "end_date": "2023-12-18T19:35:54.715-04:00",
+    "end_date": "2023-12-18T21:08:07.069-04:00",
     "transaction_amount": 10,
     "billing_day_proportional": true,
     "has_billing_day": true,
@@ -35,7 +35,7 @@
     "currency_id": "BRL",
     "free_trial": null,
     "frequency": 1,
-    "start_date": "2022-12-18T19:35:54.715-04:00"
+    "start_date": "2022-12-18T21:08:07.069-04:00"
   },
   "status": "authorized"
 }

@@ -1,6 +1,6 @@
 {
   "paging": {
-    "total": 6,
+    "total": 7,
     "offset": 0,
     "limit": 10
   },
@@ -196,14 +196,13 @@
         "pending_charge_quantity": 12
       },
       "application_id": 3920929724708463,
-      "init_point": "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_id=2c938084851aa2e5018527980e5f05e0",
       "payment_method_id": "master",
       "preapproval_plan_id": "2c93808480fe342801811df336480d74",
       "collector_id": 592485468,
       "external_reference": "idUser: 14",
       "payer_id": 39546728,
       "id": "2c938084851aa2e5018527980e5f05e0",
-      "last_modified": "2022-12-18T19:35:54.961-04:00",
+      "last_modified": "2022-12-18T20:20:15.354-04:00",
       "auto_recurring": {
         "end_date": "2023-12-18T19:35:54.715-04:00",
         "transaction_amount": 10,
@@ -214,6 +213,39 @@
         "currency_id": "BRL",
         "frequency": 1,
         "start_date": "2022-12-18T19:35:54.715-04:00"
+      },
+      "status": "cancelled",
+      "payer_first_name": "maria jose"
+    },
+    {
+      "reason": "ASSINATURA MENSAL OPPORTUNITY",
+      "date_created": "2022-12-18T21:08:07.064-04:00",
+      "back_url": "https://www.getopportunity.com.br",
+      "payer_last_name": "bezerra",
+      "summarized": {
+        "quotas": 12,
+        "pending_charge_amount": 120,
+        "pending_charge_quantity": 12
+      },
+      "application_id": 3920929724708463,
+      "init_point": "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_id=2c938084851aa321018527ec791f05dd",
+      "payment_method_id": "master",
+      "preapproval_plan_id": "2c938084851aa2d9018527cecaef0599",
+      "collector_id": 592485468,
+      "external_reference": "idUser: 14",
+      "payer_id": 39546728,
+      "id": "2c938084851aa321018527ec791f05dd",
+      "last_modified": "2022-12-18T21:08:07.342-04:00",
+      "auto_recurring": {
+        "end_date": "2023-12-18T21:08:07.069-04:00",
+        "transaction_amount": 10,
+        "has_billing_day": true,
+        "billing_day_proportional": true,
+        "frequency_type": "months",
+        "billing_day": 10,
+        "currency_id": "BRL",
+        "frequency": 1,
+        "start_date": "2022-12-18T21:08:07.069-04:00"
       },
       "status": "authorized",
       "payer_first_name": "maria jose"
