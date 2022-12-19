@@ -43,11 +43,19 @@ export class ConfirmCancelSubscribeComponent implements OnInit {
       this.accountService.setUser(this.user);
       localStorage.setItem('user', JSON.stringify(this.user));
 
-      this.isLoading = false;
 
-      this.close();
+      //delete card
+      this.cardService.deleteCard(this.user.idUser, this.accountService.getToken()).subscribe(res => {
 
-      this.alertService.error('Assinatura cancelada', 'Para continuar usando nossa ferramenta reative sua assinatura')
+        this.isLoading = false;
+
+        this.close();
+
+        this.alertService.error('Assinatura cancelada', 'Para continuar usando nossa ferramenta reative sua assinatura')
+
+      },_err => {
+        this.isLoading = false;
+      })
 
     }, _err => {
       console.log(_err);

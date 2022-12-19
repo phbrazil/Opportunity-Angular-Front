@@ -1,0 +1,104 @@
+{
+  "paging": {
+    "total": 5,
+    "offset": 0,
+    "limit": 10
+  },
+  "results": [
+    {
+      "reason": "Teste caraio",
+      "subscribed": 0,
+      "init_point": "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=2c93808480fe342801811ba10c340c37",
+      "date_created": "2022-05-31T15:39:08.212-04:00",
+      "back_url": "https://www.getopportunity.com.br",
+      "collector_id": 592485468,
+      "id": "2c93808480fe342801811ba10c340c37",
+      "auto_recurring": {
+        "frequency_type": "months",
+        "billing_day": 10,
+        "repetitions": 12,
+        "currency_id": "BRL",
+        "frequency": 1
+      },
+      "last_modified": "2022-05-31T15:39:08.535-04:00",
+      "application_id": 3920929724708463,
+      "status": "active"
+    },
+    {
+      "reason": "ASSINATURA TESTE PROD 1 REAL",
+      "subscribed": 0,
+      "init_point": "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=2c93808480fe342801811df336480d74",
+      "date_created": "2022-06-01T02:28:07.368-04:00",
+      "back_url": "https://www.getopportunity.com.br",
+      "collector_id": 592485468,
+      "id": "2c93808480fe342801811df336480d74",
+      "auto_recurring": {
+        "frequency_type": "months",
+        "billing_day": 10,
+        "repetitions": 12,
+        "currency_id": "BRL",
+        "frequency": 1
+      },
+      "last_modified": "2022-06-01T02:28:07.595-04:00",
+      "application_id": 3920929724708463,
+      "status": "active"
+    },
+    {
+      "reason": "Teste caraio",
+      "subscribed": 0,
+      "init_point": "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=2c93808480fe342801811db6f8b30d6d",
+      "date_created": "2022-06-01T01:22:19.443-04:00",
+      "back_url": "https://www.getopportunity.com.br",
+      "collector_id": 592485468,
+      "id": "2c93808480fe342801811db6f8b30d6d",
+      "auto_recurring": {
+        "frequency_type": "months",
+        "billing_day": 10,
+        "repetitions": 12,
+        "currency_id": "BRL",
+        "frequency": 1
+      },
+      "last_modified": "2022-06-01T01:22:19.773-04:00",
+      "application_id": 3920929724708463,
+      "status": "active"
+    },
+    {
+      "reason": "ASSINATURA TIMESHEET MENSAL 20 USUARIOS",
+      "subscribed": 0,
+      "init_point": "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=2c9380848117bc5501811df17b0502d0",
+      "date_created": "2022-06-01T02:26:13.893-04:00",
+      "back_url": "https://www.getopportunity.com.br",
+      "collector_id": 592485468,
+      "id": "2c9380848117bc5501811df17b0502d0",
+      "auto_recurring": {
+        "frequency_type": "months",
+        "billing_day": 10,
+        "repetitions": 12,
+        "currency_id": "BRL",
+        "frequency": 1
+      },
+      "last_modified": "2022-06-01T02:26:14.241-04:00",
+      "application_id": 3920929724708463,
+      "status": "active"
+    },
+    {
+      "reason": "ASSINATURA TESTE PROD 1 REAL",
+      "subscribed": 0,
+      "init_point": "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=2c9380848117bc5501811e25856d02d7",
+      "date_created": "2022-06-01T03:23:04.429-04:00",
+      "back_url": "https://www.getopportunity.com.br",
+      "collector_id": 592485468,
+      "id": "2c9380848117bc5501811e25856d02d7",
+      "auto_recurring": {
+        "frequency_type": "months",
+        "billing_day": 10,
+        "repetitions": 12,
+        "currency_id": "BRL",
+        "frequency": 1
+      },
+      "last_modified": "2022-06-01T03:23:04.772-04:00",
+      "application_id": 3920929724708463,
+      "status": "active"
+    }
+  ]
+}

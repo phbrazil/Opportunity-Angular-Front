@@ -73,12 +73,12 @@
                 <input value="{{identificationNumber}}"
                   formControlName="checkout__identificationNumber" type="hidden" id="form-checkout__identificationNumber">
 
-                <button [disabled]="isLoading || !newCardForm.valid || !allowSave" id="form-checkout__submit">
+                <button *ngIf="allowSave" [disabled]="isLoading || !newCardForm.valid || !allowSave" id="form-checkout__submit">
                   <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
                   Pagar
                   <fa-icon class="fa fa-angle-right" [icon]="faAngleRight"></fa-icon>
                 </button>
-                <label for="remember">Salvar minhas informações para uso posterior
+                <label for="remember">Autorizo o uso dos dados do cartão para assinatura mensal
                   <input type="checkbox" (click)="allowSaveCard($event)" id="remember">
                 </label>
               </form>

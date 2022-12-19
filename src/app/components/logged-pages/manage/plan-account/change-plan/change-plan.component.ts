@@ -82,6 +82,8 @@ export class ChangePlanComponent implements OnInit {
       this.card = res;
       this.isLoading = false;
 
+      console.log('card ',this.card);
+
     }, _err => {
       this.isLoading = false;
     })

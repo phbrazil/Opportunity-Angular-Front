@@ -1,0 +1,41 @@
+{
+  "id": "2c938084851aa2e5018527980e5f05e0",
+  "payer_id": 39546728,
+  "payer_email": "",
+  "back_url": "https://www.getopportunity.com.br",
+  "collector_id": 592485468,
+  "application_id": 3920929724708463,
+  "status": "authorized",
+  "reason": "ASSINATURA TESTE PROD 1 REAL",
+  "external_reference": "idUser: 14",
+  "date_created": "2022-12-18T19:35:54.714-04:00",
+  "last_modified": "2022-12-18T19:35:54.961-04:00",
+  "init_point": "https://www.mercadopago.com.br/subscriptions/checkout?preapproval_id=2c938084851aa2e5018527980e5f05e0",
+  "preapproval_plan_id": "2c93808480fe342801811df336480d74",
+  "auto_recurring": {
+    "frequency": 1,
+    "frequency_type": "months",
+    "transaction_amount": 10.0,
+    "currency_id": "BRL",
+    "start_date": "2022-12-18T19:35:54.715-04:00",
+    "end_date": "2023-12-18T19:35:54.715-04:00",
+    "billing_day": 10,
+    "billing_day_proportional": true,
+    "has_billing_day": true,
+    "free_trial": null
+  },
+  "summarized": {
+    "quotas": 12,
+    "charged_quantity": null,
+    "pending_charge_quantity": 12,
+    "charged_amount": null,
+    "pending_charge_amount": 120.0,
+    "semaphore": null,
+    "last_charged_date": null,
+    "last_charged_amount": null
+  },
+  "next_payment_date": "2022-12-18T19:35:54.000-04:00",
+  "payment_method_id": "master",
+  "card_id": "9007611698",
+  "first_invoice_offset": null
+}

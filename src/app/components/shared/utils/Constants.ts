@@ -40,7 +40,10 @@ export class Constants {
   //public static preapproval_plan_id = '2c9380848117bc5501811df17b0502d0';
 
   //SUBSCRIBE TESTE PROD 1 REAL
-  public static preapproval_plan_id = '2c93808480fe342801811df336480d74';
+  //public static preapproval_plan_id = '2c93808480fe342801811df336480d74';
+
+  //ASSINATURA MENSAL OPPORTUNITY
+  public static preapproval_plan_id = '2c938084851aa2d9018527cecaef0599'
 
   //SUBSCRIBE TEST
   //public static preapproval_plan_id = '2c93808480fe342801811ba10c340c37';

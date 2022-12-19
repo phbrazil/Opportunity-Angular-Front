@@ -46,7 +46,6 @@ import { MoreInfoComponentAdvance } from './advance/more-info-advance/more-info-
 import { ReceiptAdvanceComponent } from './advance/accountability/receipt-advance/receipt-advance.component';
 import { InitialSetupComponent } from './initial-setup/initial-setup.component';
 import { ExpiredComponent } from './manage/plan-account/expired/expired.component';
-import { DeleteCardComponent } from './manage/plan-account/cards/delete-card/delete-card.component';
 import { ConfirmCancelSubscribeComponent } from './manage/plan-account/confirm-cancel-subscribe/confirm-cancel-subscribe.component';
 import { PipesModule } from '../shared/pipes/pipes.module';
 import { StepperCreateAccountComponent } from './stepper-create-account/stepper-create-account.component';
@@ -97,7 +96,6 @@ import { MatCardModule } from '@angular/material/card';
     ReceiptAdvanceComponent,
     InitialSetupComponent,
     ExpiredComponent,
-    DeleteCardComponent,
     ConfirmCancelSubscribeComponent,
     StepperCreateAccountComponent
   ],

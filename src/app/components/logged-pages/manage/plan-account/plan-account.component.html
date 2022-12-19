@@ -22,11 +22,11 @@
         <input type="button" (click)="changePlan()" class="btn-custom-confirm" value="Alterar Plano" />
       </div>
       <div class="col-md-4 mt-4">
-        <input type="button" (click)="confirmDelete()" class="btn-custom-decline" value="Remover Cartão" />
+        <input type="button" (click)="confirmCancelSubscribe()" class="btn-custom-decline" value="Cancelar Assinatura" />
       </div>
-      <div class="col-md-4 mt-4">
+      <!--div class="col-md-4 mt-4">
         <button type="button" (click)="card.subId ? confirmCancelSubscribe() : reactiveSubscribe()" class="btn-custom-reject" >{{card.subId ? 'Cancelar Assinatura' : 'Reativar Assinatura'}}</button>
-      </div>
+      </div-->
     </div>
   </div>
 </div>

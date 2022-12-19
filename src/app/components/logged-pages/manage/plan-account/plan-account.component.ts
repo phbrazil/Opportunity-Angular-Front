@@ -9,7 +9,6 @@ import { PlanService } from 'src/app/_services/plan.service';
 import { TeamService } from 'src/app/_services/team.service';
 import { ChangePlanComponent } from './change-plan/change-plan.component';
 import { ConfirmCancelSubscribeComponent } from './confirm-cancel-subscribe/confirm-cancel-subscribe.component';
-import { DeleteCardComponent } from './cards/delete-card/delete-card.component';
 
 @Component({
   selector: 'app-plan-account',
@@ -38,10 +37,10 @@ export class PlanAccountComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.planService.getIsReload().subscribe(res =>{
+    this.planService.getIsReload().subscribe(res => {
       console.log(res);
-      if(res){
-        //this.loadActiveMembers();
+      if (res) {
+        this.loadActiveMembers();
         //this.loadPlan();
         //this.loadCard();
       }
@@ -80,7 +79,10 @@ export class PlanAccountComponent implements OnInit {
     this.planService.getPlan(this.user.idUser, this.accountService.getToken()).subscribe(res => {
       this.plan = res;
       this.currentPlanValue = this.planService.calcPricing(this.plan, this.activeUsers);
-      this.loadCard();
+
+      if (this.user) {
+        this.loadCard();
+      }
     }, _err => {
       this.isLoading = false;
     })
@@ -92,20 +94,10 @@ export class PlanAccountComponent implements OnInit {
     this.cardService.getCard(this.user.idUser, this.accountService.getToken()).subscribe(res => {
       this.card = res;
       this.isLoading = false;
+      console.log('card ', this.card);
     }, _err => {
       this.isLoading = false;
     })
-
-  }
-
-  confirmDelete() {
-
-    this.dialog.open(DeleteCardComponent,
-      {
-        data: {
-          idUser: this.user.idUser
-        }
-      })
 
   }
 
@@ -120,13 +112,13 @@ export class PlanAccountComponent implements OnInit {
 
   }
 
-  reactiveSubscribe(){
+  reactiveSubscribe() {
 
     this.isLoading = true;
 
   }
 
-  choosePlan(){
+  choosePlan() {
     this.dialog.open(ChangePlanComponent);
   }
 
