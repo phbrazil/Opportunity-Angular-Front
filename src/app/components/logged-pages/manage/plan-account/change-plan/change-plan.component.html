@@ -115,10 +115,10 @@
                 <div class='thin dense mb-2'>Valor por usuário</div>
                 TOTAL MENSAL
               </span>
-              <span style='float:right; text-align:right;'>
-                <div class='thin dense'>{{plan.plan}}</div>
-                <div class='thin dense'>{{activeUsers}}</div>
-                <div class='thin dense mb-2'>{{currentPlanValue /activeUsers | currency: 'BRL'}}</div>
+              <span class="font-weight-bold" style='float:right; text-align:right;'>
+                <div class='thin dense font-weight-bold'>{{plan.plan}}</div>
+                <div class='thin dense font-weight-bold'>{{activeUsers}}</div>
+                <div class='thin dense font-weight-bold mb-2'>{{currentPlanValue /activeUsers | currency: 'BRL'}}</div>
                 {{currentPlanValue | currency: 'BRL'}}
               </span>
             </div>
@@ -126,7 +126,7 @@
 
           <div class="col-md-12 mt-2">
 
-            <button mat-raised-button matStepperNext type="submit" class="btn-custom-confirm btn-block" (click)="!card ? onSubmit() : updateSubscribe()"
+            <button mat-raised-button matStepperNext type="submit" class="btn-get-started btn-block" (click)="!card ? onSubmit() : updateSubscribe()"
               [disabled]="isLoading || activeUsers == 0 || !isTime && !isRefund && !isAdvance">
               <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
               {{!card ? 'Continuar': 'Atualizar Assinatura' }}</button>
