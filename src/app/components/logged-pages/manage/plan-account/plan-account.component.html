@@ -22,7 +22,8 @@
         <input type="button" (click)="changePlan()" class="btn-custom-confirm" value="Alterar Plano" />
       </div>
       <div class="col-md-4 mt-4">
-        <input type="button" (click)="confirmCancelSubscribe()" class="btn-custom-decline" value="Cancelar Assinatura" />
+        <input type="button" (click)="confirmCancelSubscribe()" class="btn-custom-decline"
+          value="Cancelar Assinatura" />
       </div>
       <!--div class="col-md-4 mt-4">
         <button type="button" (click)="card.subId ? confirmCancelSubscribe() : reactiveSubscribe()" class="btn-custom-reject" >{{card.subId ? 'Cancelar Assinatura' : 'Reativar Assinatura'}}</button>
@@ -39,21 +40,54 @@
 
   <div *ngIf="!isLoading" class="col-md-12">
 
-    <section id="hero" class="d-flex align-items-center">
+    <mat-horizontal-stepper [linear]="isLinear" #stepper labelPosition="bottom" style="width: 100%;">
+      <mat-step [editable]="true" state="chat" label="Assinar">
+        <section id="hero" class="d-flex align-items-center">
 
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-            <h1>Melhor solução para o seu negócio</h1>
-            <input type="button" class="btn-get-started" value="Assine já" (click)="choosePlan()">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+                data-aos="fade-up" data-aos-delay="200">
+                <h1>Melhor solução para o seu negócio</h1>
+                <button class="btn-get-started" mat-raised-button color="primary" matStepperNext>Assine já</button>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                <img src="assets/img/subscribe.png" class="img-fluid animated" alt="">
+              </div>
+            </div>
           </div>
-          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-            <img src="assets/img/subscribe.png" class="img-fluid animated" alt="">
-          </div>
+
+        </section><!-- End Hero -->
+      </mat-step>
+
+
+      <mat-step [editable]="true" state="chat" label="Plano" [completed]="isAddingNewCard">
+        <div *ngIf="!isAddingNewCard; else confirmPlan">
+          <app-change-plan (notifyPlanAccount)="nextPage($event)"></app-change-plan>
         </div>
-      </div>
+        <ng-template #confirmPlan>
+          <h2>Confirme seu plano</h2>
+          <div class="margin-bottom">
+            <ul class="list-group list-group-flush" *ngIf="!isLoading">
+              <li class="list-group-item">Plano: <strong>{{plan.plan}}</strong></li>
+              <li class="list-group-item">Usuários ativos: <strong>{{activeUsers}}</strong></li>
+              <li class="list-group-item">Valor por usuário ativo: <strong>{{currentPlanValue /activeUsers | currency:
+                  'BRL'}}</strong></li>
+              <li class="list-group-item">Valor mensal: <strong>{{currentPlanValue | currency : 'BRL'}}</strong></li>
+            </ul>
+          </div>
+          <div class="margin-left">
+            <button class="btn-get-started" mat-raised-button color="primary" matStepperNext>Continuar</button>
+            <button class="btn btn-sm btn-outline-link" (click)="editPlan()"><strong>Alterar</strong></button>
+          </div>
+        </ng-template>
+      </mat-step>
 
-    </section><!-- End Hero -->
+      <mat-step [editable]="true" state="chat" label="Cartão" [completed]="false">
+        <app-new-card *ngIf="isAddingNewCard" [activeUsers]="activeUsers" [currentPlanValue]="currentPlanValue" [plan]="plan"></app-new-card>
+      </mat-step>
+
+    </mat-horizontal-stepper>
 
 
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Card } from 'src/app/_models/payment/card';
 import { Plan } from 'src/app/_models/plan';
@@ -9,11 +9,21 @@ import { PlanService } from 'src/app/_services/plan.service';
 import { TeamService } from 'src/app/_services/team.service';
 import { ChangePlanComponent } from './change-plan/change-plan.component';
 import { ConfirmCancelSubscribeComponent } from './confirm-cancel-subscribe/confirm-cancel-subscribe.component';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { Subject } from 'rxjs';
+import { SharedService } from 'src/app/_services/shared.service';
 
 @Component({
   selector: 'app-plan-account',
   templateUrl: './plan-account.component.html',
-  styleUrls: ['./plan-account.component.scss']
+  styleUrls: ['./plan-account.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { displayDefaultIndicatorType: false },
+    },
+  ],
 })
 export class PlanAccountComponent implements OnInit {
 
@@ -26,10 +36,12 @@ export class PlanAccountComponent implements OnInit {
   isPlanSelected: boolean = false;
   plan: Plan;
   card: Card;
+  isLinear: boolean = true;
+  isAddingNewCard: boolean = false;
 
   constructor(private accountService: AccountService, private dialog: MatDialog,
     private planService: PlanService, private cardService: CardService,
-    private teamService: TeamService) {
+    private teamService: TeamService, private sharedService: SharedService) {
 
     this.accountService.user.subscribe(x => this.user = x);
 
@@ -61,7 +73,10 @@ export class PlanAccountComponent implements OnInit {
     this.isLoading = true;
 
     this.teamService.getTeamMembers(this.user.idUser, this.user.idGroup, this.accountService.getToken()).subscribe(res => {
-      this.activeUsers = res.length;
+      console.log(res)
+      if(res){
+        this.activeUsers = res.length;
+      }
       this.loadPlan();
     }, _err => {
       this.isLoading = false;
@@ -118,8 +133,15 @@ export class PlanAccountComponent implements OnInit {
 
   }
 
-  choosePlan() {
-    this.dialog.open(ChangePlanComponent);
+  nextPage(event: boolean){
+    this.isAddingNewCard = event;
+    this.loadPlan();
+    this.sharedService.setStatus(true);
+  }
+
+  editPlan(){
+    this.isAddingNewCard = false;
+    this.sharedService.setStatus(false);
   }
 
 }

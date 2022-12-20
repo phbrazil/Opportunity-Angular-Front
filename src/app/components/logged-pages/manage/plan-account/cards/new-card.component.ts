@@ -1,6 +1,5 @@
-import { Component, Inject, LOCALE_ID, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, Input, LOCALE_ID, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/components/shared/utils/Constants';
 import { User } from 'src/app/_models/user';
@@ -10,7 +9,8 @@ declare var MercadoPago: any;
 import { formatCurrency, getCurrencySymbol } from '@angular/common';
 import { faAngleRight, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { Plan } from 'src/app/_models/plan';
-import { PlanService } from 'src/app/_services/plan.service';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { SharedService } from 'src/app/_services/shared.service';
 
 
 @Component({
@@ -27,25 +27,16 @@ import { PlanService } from 'src/app/_services/plan.service';
 
 export class NewCardComponent implements OnInit {
 
-
   user: User;
-
   isLoading: boolean = false;
-
-  amount: number = 0;
+  @Input() currentPlanValue: number = 0;
+  @Input() activeUsers: number = 0;
+  @Input() plan: Plan;
   amountPipeString: string;
-
-  activeUsers: number = 0;
-
   faAngleRight = faAngleRight;
-
-  plan: Plan;
 
   faCheck = faCheck;
   faX = faX;
-
-
-
   //emailTest: string = 'test_user_898709461234@testuser.com';
 
   installments: string = '';
@@ -55,24 +46,39 @@ export class NewCardComponent implements OnInit {
   identificationNumberFormatted: string = '';
   identificationNumber: string = '';
   newCardForm: FormGroup;
-
   mp: any = new MercadoPago(Constants.public_key);
   cardForm: any = '';
 
-  constructor(private accountService: AccountService, private matDialog: MatDialog,
-    private router: Router, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any,
-    private alertService: AlertService, private planService: PlanService,
+  @Input() events: Observable<void>;
+
+
+  constructor(private accountService: AccountService,
+    private router: Router, private fb: FormBuilder,
+    private alertService: AlertService, private sharedService: SharedService, private changeDetector: ChangeDetectorRef,
     @Inject(LOCALE_ID) private locale: string) {
-
     this.accountService.user.subscribe(x => this.user = x);
-
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-
   }
 
 
   ngOnInit(): void {
 
+    this.sharedService.getStatus().subscribe(res =>{
+      if(res){
+        console.log(res);
+        this.mountForm();
+      }
+    })
+
+    //this.mountForm();
+  }
+
+  ngOnDestroy() {
+    console.log('Items destroyed');
+  }
+
+  mountForm(){
+    console.log('mounting form')
     this.newCardForm =
       this.fb.group({
         checkout__cardholderName: ['', Validators.required],
@@ -85,97 +91,62 @@ export class NewCardComponent implements OnInit {
         checkout__installments: ['', Validators.required],
         checkout__cardholderEmail: [this.user.email, Validators.required],
       });
-
-
-    this.amount = this.data.currentPlanValue;
-    this.activeUsers = this.data.activeUsers;
-    this.plan = this.data.plan;
-
-    this.amountPipeString = formatCurrency(this.amount, this.locale, getCurrencySymbol('BRL', 'wide'));
-
+    this.amountPipeString = formatCurrency(this.currentPlanValue, this.locale, getCurrencySymbol('BRL', 'wide'));
     this.loadForm();
-
   }
 
   submit() {
-
     this.isLoading = true;
-
   }
 
   checkSelects() {
-
     this.installments = (<HTMLSelectElement>document.getElementById('form-checkout__installments')).value;
     this.identificationType = (<HTMLSelectElement>document.getElementById('form-checkout__identificationType')).value;
     this.issuer = (<HTMLSelectElement>document.getElementById('form-checkout__issuer')).value;
-
     this.newCardForm.patchValue({
       checkout__installments: this.installments,
       checkout__identificationType: this.identificationType,
       checkout__issuer: this.issuer,
     })
-
-
   }
 
   setIdentificationNumber(document: any) {
-
     let value = document.target.value;
-
     value = value.replaceAll('.', '').replaceAll('-', '').replaceAll('/', '');
-
     this.identificationNumber = value;
-
     if (value.length == 11) {
       this.identificationType = 'CPF';
       this.newCardForm.patchValue({
         checkout__identificationType: 'CPF',
         checkout__identificationNumber: this.identificationNumber
       })
-
     } else if (value > 11) {
       this.identificationType = 'CNPJ';
-
       this.newCardForm.patchValue({
         checkout__identificationType: 'CNPJ',
         checkout__identificationNumber: this.identificationNumber
       })
-
     }
   }
 
   allowSaveCard(event: any) {
-
     if (event.target.checked) {
       this.allowSave = true;
     } else {
       this.allowSave = false;
     }
-
   }
 
   unmountForm() {
+    if (this.cardForm) {
 
-    console.log(this.cardForm)
+      console.log('Unmounting FORM')
 
-    if (this.cardForm != '') {
       this.cardForm.unmount();
+      this.cardForm = '';
+      this.changeDetector.detectChanges();
+
     }
-
-
-  }
-
-  close() {
-
-    this.unmountForm();
-
-    this.matDialog.closeAll();
-
-    //this.planService.setIsReload(false);
-
-    //this.router.navigate(['/manage'])
-
-
   }
 
   clearForm() {
@@ -185,7 +156,7 @@ export class NewCardComponent implements OnInit {
   loadForm() {
 
     this.cardForm = this.mp.cardForm({
-      amount: String(this.amount),
+      amount: String(this.currentPlanValue),
       autoMount: true,
       debug: true,
       form: {
@@ -233,13 +204,9 @@ export class NewCardComponent implements OnInit {
           console.log("Form mounted");
         },
         onSubmit: (event: { preventDefault: () => void; }) => {
-
           console.log(event);
           console.log(this.cardForm.getCardFormData());
-
-
           event.preventDefault();
-
           const {
             paymentMethodId: payment_method_id,
             issuerId: issuer_id,
@@ -250,12 +217,8 @@ export class NewCardComponent implements OnInit {
             identificationNumber,
             identificationType,
           } = this.cardForm.getCardFormData();
-
           const identificationNumberFormat = identificationNumber.replaceAll('.', '').replaceAll('-', '').replaceAll('/', '');
-
           console.log(identificationNumberFormat);
-
-
           fetch(Constants.baseUrl + "/opportunity/payment/subscribe_plan", {
             method: "POST",
             mode: 'cors',
@@ -285,59 +248,40 @@ export class NewCardComponent implements OnInit {
             }),
           }).then(response => response.json())
             .then(data => {
-
               if (data.status == 'authorized') {
-
                 //set new user locally
                 this.user.trial = false;
                 this.accountService.setUser(this.user);
                 localStorage.setItem('user', JSON.stringify(this.user));
-
-                this.close();
                 this.router.navigate(['/manage']);
-
                 this.alertService.success(Constants.payment_approved, Constants.enjoy, { autoClose: true, keepAfterRouteChange: true });
-
               } else if (data.status == 'pending') {
                 this.isLoading = false;
                 this.unmountForm();
                 this.clearForm();
                 this.alertService.error(Constants.payment_rejected, Constants.check_card, { autoClose: true, keepAfterRouteChange: true });
-
               } else {
                 this.isLoading = false;
                 this.unmountForm();
                 this.clearForm();
                 this.alertService.error(Constants.errorTittle, Constants.check_card, { autoClose: true, keepAfterRouteChange: true });
-
               }
-
             }).catch(error => {
-
               console.log(error)
-
               this.isLoading = false;
               this.unmountForm();
               this.clearForm();
               this.alertService.error(Constants.errorTittle, Constants.check_card, { autoClose: true, keepAfterRouteChange: true });
-
             });
         },
         onFetching: (resource: any) => {
           console.log("Fetching resource: ", resource);
-
-
           // Animate progress bar
           const progressBar = document.querySelector(".progress-bar");
-
           return () => {
-
-
           };
         }
       },
     });
-
   }
-
 }

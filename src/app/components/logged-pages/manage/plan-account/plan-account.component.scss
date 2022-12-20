@@ -1,3 +1,7 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+
 body {
   font: 16px "Helvetica Neue", Helvetica, sans-serif;
   background: #fbfbfb;
@@ -295,4 +299,12 @@ a {
   margin: 10px 0 0 0;
   color: #fff;
   background: #47b2e4;
+}
+
+.margin-bottom{
+  margin-bottom: 5rem;
+}
+
+.margin-left{
+  margin-left: 5rem;
 }
