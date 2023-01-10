@@ -88,7 +88,6 @@ export class TasksComponent implements OnInit {
   }
 
   public isChecked(task: TimeTask): boolean{
-    console.log(task);
    return task.status == 'paid' ? true : false
   }
 
