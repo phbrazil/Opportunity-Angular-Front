@@ -81,13 +81,14 @@ export class TasksComponent implements OnInit {
     this.timeService.changeStatus(list,this.user.idUser, this.accountService.getToken()).subscribe(res =>{
       this.task.status = changeStatus.status;
       this.isLoading = false;
-    }, err =>{
+    }, _err =>{
         this.isLoading = false;
     })
 
   }
 
   public isChecked(task: TimeTask): boolean{
+    //to do enum here
    return task.status == 'paid' ? true : false
   }
 

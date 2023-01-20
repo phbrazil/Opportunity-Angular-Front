@@ -1,7 +1,7 @@
 <div class="default-font">
   <div id="page">
     <div id="main">
-      <div class="product-container">
+      <div class="product-container" *ngIf="plan">
         <h2>Plano {{plan.plan}}
         </h2>
         <span class="products">
@@ -9,7 +9,7 @@
             [icon]="plan.enableTime ?  faCheck : faX"></fa-icon> Timesheet
         </span>
         <span class="products">
-          <fa-icon [ngClass]="{'check' : plan.enableAdvance, 'uncheck' : !plan.enableAdvance}" class="fa"
+          <fa-icon [ngClass]="{'check' : plan.enableAdvance, 'uncheck' : !plan?.enableAdvance}" class="fa"
             [icon]="plan.enableAdvance ?  faCheck : faX"></fa-icon> Adiantamentos
         </span>
         <span class="products">

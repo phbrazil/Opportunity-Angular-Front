@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { RoutesLogged } from '../components/logged-pages/routes-logged';
 import { User } from '../_models/user';
 import { AccountService } from './account.service';
 import { PlanService } from './plan.service';
@@ -44,13 +45,12 @@ export class AuthInterceptor implements HttpInterceptor {
       daysLeft = this.planService.getDaysLeft(this.user?.trialDate);
 
       if (this.user?.trial && this.user?.admin && daysLeft < 1) {
-        this.router.navigate(['/manage']);
-      } else if (this.user?.trial && !this.user?.admin && daysLeft < 1) {
-        this.router.navigate(['/expired']);
+        //if user is not in the manage route redirect to payment method
+        if(!this.router.url.includes(RoutesLogged.Manage)){
+          this.router.navigate([`/${RoutesLogged.Manage}`]);
+        }
       }
     }
-
-
 
     if (!this.token) {
 

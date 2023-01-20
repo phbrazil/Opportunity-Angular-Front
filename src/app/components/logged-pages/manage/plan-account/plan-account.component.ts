@@ -109,7 +109,6 @@ export class PlanAccountComponent implements OnInit {
     this.cardService.getCard(this.user.idUser, this.accountService.getToken()).subscribe(res => {
       this.card = res;
       this.isLoading = false;
-      console.log('card ', this.card);
     }, _err => {
       this.isLoading = false;
     })
