@@ -13,6 +13,7 @@ import { TaskService } from 'src/app/_services/task.service';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Task } from 'src/app/_models/task';
 import { Project } from 'src/app/_models/project';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-stepper-create-account',
@@ -96,6 +97,24 @@ export class StepperCreateAccountComponent implements OnInit {
 
     //add project
 
+    //multiples subscribe using mergemap
+
+    this.projectService.newProject(project, this.user.idUser, this.accountService.getToken()).pipe(
+      mergeMap((_newProject) => this.taskService.newTask(task, this.user.idUser, this.accountService.getToken())),
+      mergeMap((_newTask) => this.settingsService.disableInitialSetup(this.user.idUser, this.accountService.getToken()))
+    ).subscribe(_disableInitialSetup =>{
+        this.isLoading = false;
+          this.user.initialSetup = false;
+          //set new user locally
+          this.accountService.setUser(this.user);
+          localStorage.setItem('user', JSON.stringify(this.user));
+          this.defaultSettings();
+    }, _err => {
+      this.alertService.error(Constants.errorTittle, Constants.errorTittle);
+      this.isLoading = false;
+    })
+
+/*
     this.projectService.newProject(project, this.user.idUser, this.accountService.getToken()).subscribe(_res => {
 
       //add task
@@ -129,6 +148,8 @@ export class StepperCreateAccountComponent implements OnInit {
       this.alertService.error(Constants.errorTittle, Constants.errorTittle);
       this.isLoading = false;
     })
+
+    */
 
   }
 

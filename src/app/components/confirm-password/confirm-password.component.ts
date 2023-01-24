@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { mergeMap } from 'rxjs/operators';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 
@@ -59,6 +60,20 @@ export class ConfirmPasswordComponent implements OnInit {
     this.isLoading = true;
     this.isLogging = true;
 
+    this.accountService.createNewPassword(this.newPassForm.value).pipe(
+      mergeMap((_createNewPassword)=>this.accountService.login(this.newPassForm.value.email, this.newPassForm.value.password))
+    ).subscribe(user =>{
+      this.isLoading = false;
+      this.isLogging = false;
+      this.accountService.setUser(user);
+      this.accountService.setIsLogged(true);
+      this.router.navigate(['/time']);
+      this.close();
+    }, _err=>{
+      this.isLogging = false;
+    })
+
+    /*
     this.accountService.createNewPassword(this.newPassForm.value).subscribe(_res => {
 
       this.isLoading = false;
@@ -84,6 +99,7 @@ export class ConfirmPasswordComponent implements OnInit {
       this.isLoading = false;
 
     })
+    */
 
   }
 

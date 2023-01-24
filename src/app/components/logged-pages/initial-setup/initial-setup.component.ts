@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { mergeMap } from 'rxjs/operators';
 import { Settings } from 'src/app/_models/settings';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
@@ -92,6 +93,24 @@ export class InitialSetupComponent implements OnInit {
 
     //add project
 
+    //multiples subscribe using mergemap
+
+    this.projectService.newProject(this.newProjectForm.value, this.user.idUser, this.accountService.getToken()).pipe(
+      mergeMap((_newProject) => this.taskService.newTask(this.newTaskForm.value, this.user.idUser, this.accountService.getToken())),
+      mergeMap((_newTask) => this.settingsService.disableInitialSetup(this.user.idUser, this.accountService.getToken()))
+    ).subscribe(_disableInitialSetup => {
+      this.isLoading = false;
+      this.user.initialSetup = false;
+      //set new user locally
+      this.accountService.setUser(this.user);
+      localStorage.setItem('user', JSON.stringify(this.user));
+      this.newSettings();
+    }, _err => {
+      this.alertService.error(Constants.errorTittle, Constants.errorTittle);
+      this.isLoading = false;
+    })
+
+    /*
     this.projectService.newProject(this.newProjectForm.value, this.user.idUser, this.accountService.getToken()).subscribe(_res => {
 
       //add task
@@ -125,6 +144,7 @@ export class InitialSetupComponent implements OnInit {
       this.alertService.error(Constants.errorTittle, Constants.errorTittle);
       this.isLoading = false;
     })
+    */
 
   }
 
@@ -164,7 +184,7 @@ export class InitialSetupComponent implements OnInit {
 
   }
 
-  start(){
+  start() {
 
     this.router.navigate(['/time']);
 

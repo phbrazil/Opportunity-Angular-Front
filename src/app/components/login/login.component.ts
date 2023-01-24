@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { pipe } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 import { Settings } from 'src/app/_models/settings';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
@@ -115,22 +117,16 @@ export class LoginComponent implements OnInit {
 
   loadSettings() {
     this.isLoading = true;
-
-    this.accountService.user.subscribe(x => {
-
-      if (x) {
-        this.settingsService.getSettings(x.idUser, this.accountService.getToken()).subscribe(res => {
-          this.settingsService.setSettings(res);
-          this.isLoading = false;
-        }, _err => {
-
-          this.isLoading = false;
-        })
-
-      }
-
-    });
-
+    this.accountService.user.pipe(
+      mergeMap((user: User) => this.settingsService.getSettings(user.idUser, this.accountService.getToken()))
+    ).subscribe(res => {
+      console.log(res);
+      this.settingsService.setSettings(res);
+      this.isLoading = false;
+    }, _err => {
+      this.alertService.error('Ocorreu um erro', 'tente novamente mais tarde', { keepAfterRouteChange: true });
+      this.isLoading = false;
+    })
   }
 
 }

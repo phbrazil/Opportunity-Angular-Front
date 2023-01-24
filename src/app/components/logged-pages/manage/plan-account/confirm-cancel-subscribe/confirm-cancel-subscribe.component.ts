@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { mergeMap } from 'rxjs/operators';
 import { Card } from 'src/app/_models/payment/card';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
@@ -33,6 +34,25 @@ export class ConfirmCancelSubscribeComponent implements OnInit {
 
     this.isLoading = true;
 
+    this.cardService.cancelSubscribe(this.user.idUser, this.data.subId, this.accountService.getToken()).pipe(
+      mergeMap((_cancelSubscribe) => this.cardService.deleteCard(this.user.idUser, this.accountService.getToken()))
+    ).subscribe(_deleteCard => {
+
+      //set trial locally
+      this.user.trial = true;
+      this.accountService.setUser(this.user);
+      localStorage.setItem('user', JSON.stringify(this.user));
+      this.isLoading = false;
+      this.close();
+      this.alertService.error('Assinatura cancelada', 'Para continuar usando nossa ferramenta reative sua assinatura');
+
+    }, _err =>{
+      this.alertService.error('Ocorreu um erro', 'Tente novamente mais tarde')
+      this.isLoading =false;
+    })
+
+    /*
+
     this.cardService.cancelSubscribe(this.user.idUser, this.data.subId, this.accountService.getToken()).subscribe(res => {
 
       console.log(res)
@@ -61,6 +81,7 @@ export class ConfirmCancelSubscribeComponent implements OnInit {
       console.log(_err);
       this.isLoading = false;
     })
+    */
   }
 
   close() {
