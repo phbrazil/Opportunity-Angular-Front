@@ -61,15 +61,15 @@ export class ConfirmPasswordComponent implements OnInit {
     this.isLogging = true;
 
     this.accountService.createNewPassword(this.newPassForm.value).pipe(
-      mergeMap((_createNewPassword)=>this.accountService.login(this.newPassForm.value.email, this.newPassForm.value.password))
-    ).subscribe(user =>{
+      mergeMap((_createNewPassword) => this.accountService.login(this.newPassForm.value.email, this.newPassForm.value.password))
+    ).subscribe(user => {
       this.isLoading = false;
       this.isLogging = false;
       this.accountService.setUser(user);
       this.accountService.setIsLogged(true);
       this.router.navigate(['/time']);
       this.close();
-    }, _err=>{
+    }, _err => {
       this.isLogging = false;
     })
 
