@@ -57,7 +57,7 @@ export class EditTaskComponent implements OnInit {
       notes: [this.task.notes],
       date: [this.task.date, Validators.required],
       idUser: [this.task.idUser, Validators.required],
-      idTask: [this.task.idTask, Validators.required],
+      idTime: [this.task.idTime, Validators.required],
 
     });
 

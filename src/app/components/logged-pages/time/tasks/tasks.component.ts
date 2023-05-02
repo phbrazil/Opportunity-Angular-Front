@@ -66,12 +66,12 @@ export class TasksComponent implements OnInit {
 
   }
 
-  changeStatus(idTask: number, event: any){
+  changeStatus(idTime: number, event: any){
     this.isLoading = true;
 
     let changeStatus = {
       status: event.target.checked? ChangeStatusEnum.paid : ChangeStatusEnum.open,
-      idTask: idTask
+      idTime: idTime
     } as ChangeStatus;
 
     let list: ChangeStatus[] = [];
