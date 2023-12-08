@@ -31,7 +31,7 @@
           <div class="col-md-8 order-md-1 mt-4" [formGroup]="newEntryForm" (ngSubmit)="onSubmit()">
             <div class="row">
               <div class="col-md-12 order-md-1 mb-2">
-                <textarea formControlName="notes" maxlength="50" type="text"
+                <textarea formControlName="notes" maxlength="200" type="text"
                   class="form-control default-font custom-drop" #notes name="notes" autocomplete="false"
                   placeholder="Notas (Opcional)"></textarea>
               </div>
