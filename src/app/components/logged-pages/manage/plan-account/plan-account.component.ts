@@ -50,7 +50,6 @@ export class PlanAccountComponent implements OnInit {
   ngOnInit(): void {
 
     this.planService.getIsReload().subscribe(res => {
-      console.log(res);
       if (res) {
         this.loadActiveMembers();
         //this.loadPlan();
@@ -73,7 +72,6 @@ export class PlanAccountComponent implements OnInit {
     this.isLoading = true;
 
     this.teamService.getTeamMembers(this.user.idUser, this.user.idGroup, this.accountService.getToken()).subscribe(res => {
-      console.log(res)
       if(res){
         this.activeUsers = res.length;
       }

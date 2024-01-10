@@ -91,8 +91,6 @@ export class NewEntryComponent implements OnInit {
 
   onChangeTask(event: any) {
 
-    console.log(event, " event");
-
     if (event != undefined) {
       this.task = this.newEntryForm.value.task.name;
       this.idTask = this.newEntryForm.value.task.idTask;
@@ -114,8 +112,6 @@ export class NewEntryComponent implements OnInit {
   onSubmit() {
 
     this.isLoading = true;
-
-    console.log(this.newEntryForm.value);
 
     this.timeService.newEntry(this.newEntryForm.value, this.accountService.getToken()).subscribe(_res => {
 

@@ -65,7 +65,6 @@ export class NewCardComponent implements OnInit {
 
     this.sharedService.getStatus().subscribe(res =>{
       if(res){
-        console.log(res);
         this.mountForm();
       }
     })
@@ -78,7 +77,6 @@ export class NewCardComponent implements OnInit {
   }
 
   mountForm(){
-    console.log('mounting form')
     this.newCardForm =
       this.fb.group({
         checkout__cardholderName: ['', Validators.required],
@@ -140,8 +138,6 @@ export class NewCardComponent implements OnInit {
   unmountForm() {
     if (this.cardForm) {
 
-      console.log('Unmounting FORM')
-
       this.cardForm.unmount();
       this.cardForm = '';
       this.changeDetector.detectChanges();
@@ -201,11 +197,8 @@ export class NewCardComponent implements OnInit {
       callbacks: {
         onFormMounted: (error: any) => {
           if (error) return console.warn("Form Mounted handling error: ", error);
-          console.log("Form mounted");
         },
         onSubmit: (event: { preventDefault: () => void; }) => {
-          console.log(event);
-          console.log(this.cardForm.getCardFormData());
           event.preventDefault();
           const {
             paymentMethodId: payment_method_id,
@@ -218,7 +211,6 @@ export class NewCardComponent implements OnInit {
             identificationType,
           } = this.cardForm.getCardFormData();
           const identificationNumberFormat = identificationNumber.replaceAll('.', '').replaceAll('-', '').replaceAll('/', '');
-          console.log(identificationNumberFormat);
           fetch(Constants.baseUrl + "/opportunity/payment/subscribe_plan", {
             method: "POST",
             mode: 'cors',

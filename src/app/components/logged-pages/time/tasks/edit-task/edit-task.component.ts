@@ -37,7 +37,7 @@ export class EditTaskComponent implements OnInit {
   tasks: Task[] = [];
 
 
-  constructor(public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public timeTask: any, private timeService: TimeService,
+  constructor(public dialog: MatDialog, private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public timeTask: {task: TimeTask}, private timeService: TimeService,
     private taskService: TaskService, private projectService: ProjectService, private accountService: AccountService) {
 
     this.accountService.user.subscribe(x => this.user = x);

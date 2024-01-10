@@ -5,6 +5,7 @@ import { Constants } from 'src/app/components/shared/utils/Constants';
 import { AccountService } from 'src/app/_services/account.service';
 import { AlertService } from 'src/app/_services/alert.service';
 import { TimeService } from 'src/app/_services/time.service';
+import { TimeTask } from 'src/app/_models/time-task';
 
 @Component({
   selector: 'app-delete-task',
@@ -14,7 +15,7 @@ import { TimeService } from 'src/app/_services/time.service';
 export class DeleteTaskComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private timeService: TimeService, private accountService: AccountService,
-        @Inject(MAT_DIALOG_DATA) public task: any, private alertService: AlertService) { }
+        @Inject(MAT_DIALOG_DATA) public task: {task: TimeTask}, private alertService: AlertService) { }
 
   isLoading: boolean = false;
 
@@ -30,7 +31,8 @@ export class DeleteTaskComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.timeService.deleteEntry(this.task.task.idTask, this.accountService.getToken()).subscribe(_res =>{
+    this.timeService.deleteEntry(this.task.task.idTime, this.accountService.getToken()).subscribe(_res =>{
+
 
       this.isLoading = false;
 

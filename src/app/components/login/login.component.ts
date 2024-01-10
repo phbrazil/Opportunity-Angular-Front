@@ -120,7 +120,6 @@ export class LoginComponent implements OnInit {
     this.accountService.user.pipe(
       mergeMap((user: User) => this.settingsService.getSettings(user.idUser, this.accountService.getToken()))
     ).subscribe(res => {
-      console.log(res);
       this.settingsService.setSettings(res);
       this.isLoading = false;
     }, _err => {

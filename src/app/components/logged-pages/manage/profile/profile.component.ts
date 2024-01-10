@@ -121,7 +121,6 @@ export class ProfileComponent implements OnInit {
 
   handleUpload(event: any) {
     const file = event.target.files[0];
-    console.log(file)
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
@@ -131,8 +130,6 @@ export class ProfileComponent implements OnInit {
       this.settings.profileImage = this.profileImage;
 
       if (file.size > 100000) {
-
-        console.log(reader.result);
 
         this.settings.profileImage = '';
 

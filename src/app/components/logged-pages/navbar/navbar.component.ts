@@ -38,8 +38,6 @@ export class NavbarComponent implements OnInit {
 
     this.settingsService.settings.subscribe(x => this.settings = x);
 
-    console.log(this.settings)
-
   }
 
   ngOnInit(): void {
