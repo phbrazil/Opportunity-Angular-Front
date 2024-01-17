@@ -1,3 +1,32 @@
+:host {
+
+  ::ng-deep {
+
+    button {
+      height: 4rem;
+      border-radius: 0.5rem;
+    }
+
+    .p-inputtext {
+      height: 4rem;
+      border: 1px solid #ced4da;
+      font-size: 2rem;
+    }
+
+    .p-calendar {
+      width: 30rem;
+    }
+
+    .pi-calendar {
+      font-size: 2rem;
+    }
+  }
+
+  .search-button {
+    margin-left: 1rem;
+    font-size: 2rem;
+  }
+}
 
 .custom-day {
   text-align: center;
@@ -6,13 +35,17 @@
   height: 2rem;
   width: 2rem;
 }
+
 .custom-day.focused {
   background-color: #e6e6e6;
 }
-.custom-day.range, .custom-day:hover {
+
+.custom-day.range,
+.custom-day:hover {
   background-color: rgb(2, 117, 216);
   color: white;
 }
+
 .custom-day.faded {
   background-color: rgba(2, 117, 216, 0.5);
 }

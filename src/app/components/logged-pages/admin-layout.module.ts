@@ -54,10 +54,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -121,7 +121,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatCardModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+
+    CalendarModule
 
   ], exports: [
     NavbarComponent,

@@ -1,10 +1,11 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbCalendar, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { TimeTask } from 'src/app/_models/time-task';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { TimeService } from 'src/app/_services/time.service';
 import * as htmlToImage from 'html-to-image';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-time-reports',
@@ -14,6 +15,13 @@ import * as htmlToImage from 'html-to-image';
 export class TimeReportsComponent implements OnInit {
 
   hoveredDate: NgbDate | null = null;
+
+  //start with the current day
+  public startDate = new Date(new Date().toDateString());
+  public endDate = new Date(new Date().toDateString());
+  public date: Date[] = [this.startDate, this.endDate];
+  public datepipe: DatePipe = new DatePipe('en-US')
+  //public minDateValue = new Date();
 
   user: User;
 
@@ -79,8 +87,8 @@ export class TimeReportsComponent implements OnInit {
 
     this.isLoading = true;
 
-    let startDate = this.fromDate.day + '-' + this.fromDate.month + '-' + this.fromDate.year;
-    let endDate = this.toDate.day + '-' + this.toDate.month + '-' + this.toDate.year;
+    let startDate = this.datepipe.transform(this.date[0], 'dd-MM-YYYY')
+    let endDate = this.datepipe.transform(this.date[1], 'dd-MM-YYYY')
 
     this.timeService.getEntriesByDate(this.user.idUser, startDate, endDate, this.accountService.getToken()).subscribe(res => {
 
@@ -108,6 +116,22 @@ export class TimeReportsComponent implements OnInit {
       .catch(function (error) {
         console.error('oops, something went wrong!', error);
       });
+  }
+
+  public updateReport(): void {
+    this.isLoading = true;
+    const datepipe: DatePipe = new DatePipe('en-US')
+    let startDate = datepipe.transform(this.date[0], 'dd-MM-YYYY')
+    let endDate = datepipe.transform(this.date[1], 'dd-MM-YYYY')
+
+
+    this.timeService.getEntriesByDate(this.user.idUser, startDate, endDate, this.accountService.getToken()).subscribe(res => {
+      this.isLoading = false;
+
+      this.tasks = res;
+
+    })
+
   }
 
 }

@@ -8,8 +8,8 @@
     <div class="collapse navbar-collapse mt-4" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a *ngIf="plan?.enableTime" class="nav-item nav-link" routerLink="/time">Tempo</a>
-        <a *ngIf="plan?.enableAdvance" class="nav-item nav-link" routerLink="/advance">Adiantamento</a>
-        <a *ngIf="plan?.enableRefund" class="nav-item nav-link" routerLink="/refund">Reembolso</a>
+        <a *ngIf="plan?.enableAdvance" class="nav-item nav-link disabled" routerLink="/advance" disabled="true">Adiantamento</a>
+        <a *ngIf="plan?.enableRefund" class="nav-item nav-link disabled" routerLink="/refund" disabled="true">Reembolso</a>
         <a class="nav-item nav-link" routerLink="/reports">Relatórios</a>
         <a class="nav-item nav-link end" routerLink="/manage">
           <img *ngIf="settings.profileImage" class="img-fluid icon-image" src="{{base64 + settings?.profileImage }}" width="25" height="25" alt="profile" />

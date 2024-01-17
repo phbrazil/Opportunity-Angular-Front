@@ -6,12 +6,12 @@
         aria-label="Button that displays a tooltip that hides when scrolled out of the container"
         [disabled]="user?.trial && members?.length == 10 || plan?.plan == 'Pro' && members?.length == 20" type="button"
         class="btn-sm btn-custom-confirm zoom" (click)="newMember()">
-        <fa-icon class="fa" [icon]="faPlus"></fa-icon> Novo Membro
+        <fa-icon class="fa" [icon]="faPlus"></fa-icon> Convidar Pessoa
       </button>
     </div>
   </div>
   <table datatable [dtOptions]="dtOptions" class="table text-muted table-striped" id="members"
-    aria-describedby="membros">
+    aria-describedby="Pessoas">
     <thead>
       <tr>
         <th scope="col">#</th>

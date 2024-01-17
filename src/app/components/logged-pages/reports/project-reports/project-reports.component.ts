@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartType, LegendItem } from '../../lbd/lbd-chart/lbd-chart.component';
+import { TimeService } from 'src/app/_services/time.service';
+import { User } from 'src/app/_models/user';
+import { AccountService } from 'src/app/_services/account.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-project-reports',
@@ -7,6 +11,15 @@ import { ChartType, LegendItem } from '../../lbd/lbd-chart/lbd-chart.component';
   styleUrls: ['./project-reports.component.scss']
 })
 export class ProjectReportsComponent implements OnInit {
+
+  //start with the current day
+  public startDate = new Date(new Date().toDateString());
+  public endDate = new Date(new Date().toDateString());
+  public date: Date[] = [this.startDate, this.endDate];
+  public datepipe: DatePipe = new DatePipe('en-US')
+  //public minDateValue = new Date();
+
+  user: User;
 
   public emailChartType: ChartType;
   public emailChartData: any;
@@ -25,16 +38,17 @@ export class ProjectReportsComponent implements OnInit {
 
   isLoading: boolean = false;
 
-  constructor() { }
-
-  ngOnInit(): void {
-
-    this.loadCharts();
+  constructor(private timeService: TimeService, private accountService: AccountService) {
+    this.accountService.user.subscribe(x => this.user = x);
 
 
   }
 
-  loadCharts(){
+  ngOnInit(): void {
+    this.loadCharts();
+  }
+
+  loadCharts() {
 
     this.isLoading = true;
 
@@ -96,6 +110,22 @@ export class ProjectReportsComponent implements OnInit {
 
     this.isLoading = false;
 
+  }
+
+  public updateReport(): void {
+
+    this.isLoading = true;
+
+    let startDate = this.datepipe.transform(this.date[0], 'dd-MM-YYYY')
+    let endDate = this.datepipe.transform(this.date[1], 'dd-MM-YYYY')
+
+    this.timeService.getEntriesByDate(this.user.idUser, startDate, endDate, this.accountService.getToken()).subscribe(res => {
+
+      console.log(res)
+
+      this.isLoading = false;
+
+    });
   }
 
 

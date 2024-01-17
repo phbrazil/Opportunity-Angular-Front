@@ -46,29 +46,32 @@
         </table>
       </div>
       <div class='payment__types'>
-        <table class='payment__type payment__type--paypal table'
-          [ngClass]="{'active' : plan?.enableAdvance, '' : !plan?.enableAdvance }" (click)="checkIsAdvance()">
-          <tbody>
-            <tr>
-              <th><img alt="adiantamento" src='assets/img/plan/advance.png' class='full-width'>
-              </th>
-              <td>
-                <h4 class='thin'>Adiantamento</h4>
-              </td>
-              <td>
-                <span class='thin small'>Chega de solicitar adiantamentos por email</span>
-              </td>
-              <td>
-                <span class='thin small text-primary'><strong>Clique para {{!plan.enableAdvance? 'adicionar':
-                    'remover'}}</strong></span>
-              </td>
-            </tr>
-          </tbody>
+        <!--table class='payment__type payment__type--paypal table'
+          [ngClass]="{'active' : plan?.enableAdvance, '' : !plan?.enableAdvance }" (click)="checkIsAdvance()"-->
+        <table class='payment__type payment__type--paypal table'>
+        <tbody>
+          <tr>
+            <th><img alt="adiantamento" src='assets/img/plan/advance.png' class='full-width'>
+            </th>
+            <td>
+              <h4 class='thin'>Adiantamento</h4>
+            </td>
+            <td>
+              <span class='thin small'>Chega de solicitar adiantamentos por email</span>
+            </td>
+            <td>
+              <!--span class='thin small text-primary'><strong>Clique para {{!plan.enableAdvance? 'adicionar':
+                    'remover'}}</strong></span-->
+              <span class='thin small text-secondary'><strong>Em Desenvolvimento</strong></span>
+            </td>
+          </tr>
+        </tbody>
         </table>
       </div>
       <div class='payment__types'>
-        <table class='payment__type payment__type--paypal table' s
-          [ngClass]="{'active' : plan?.enableRefund, '' : !plan?.enableRefund }" (click)="checkIsRefund()">
+        <!--table class='payment__type payment__type--paypal table'
+          [ngClass]="{'active' : plan?.enableRefund, '' : !plan?.enableRefund }" (click)="checkIsRefund()"-->
+        <table class='payment__type payment__type--paypal table'>
           <tbody>
             <tr>
               <th><img alt="refund" src='assets/img/plan/refund.png' class='full-width'>
@@ -80,8 +83,9 @@
                 <span class='thin small'>Não fique preocupado se vai receber aquele valor gasto</span>
               </td>
               <td>
-                <span class='thin small text-primary'><strong>Clique para {{!plan.enableRefund? 'adicionar':
-                    'remover'}}</strong></span>
+                <!--span class='thin small text-primary'><strong>Clique para {{!plan.enableRefund? 'adicionar':
+                    'remover'}}</strong></span-->
+                <span class='thin small text-secondary'><strong>Em Desenvolvimento</strong></span>
               </td>
             </tr>
           </tbody>
@@ -126,7 +130,8 @@
 
           <div class="col-md-12 mt-2">
 
-            <button mat-raised-button matStepperNext type="submit" class="btn-get-started btn-block" (click)="!card ? onSubmit() : updateSubscribe()"
+            <button mat-raised-button matStepperNext type="submit" class="btn-get-started btn-block"
+              (click)="!card ? onSubmit() : updateSubscribe()"
               [disabled]="isLoading || activeUsers == 0 || !isTime && !isRefund && !isAdvance">
               <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
               {{!card ? 'Continuar': 'Atualizar Assinatura' }}</button>
