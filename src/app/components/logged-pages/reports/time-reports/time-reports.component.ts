@@ -17,7 +17,7 @@ export class TimeReportsComponent implements OnInit {
   hoveredDate: NgbDate | null = null;
 
   //start with the current day
-  public startDate = new Date(new Date().toDateString());
+  public startDate = new Date(new Date().getTime() - 2592000000);
   public endDate = new Date(new Date().toDateString());
   public date: Date[] = [this.startDate, this.endDate];
   public datepipe: DatePipe = new DatePipe('en-US')

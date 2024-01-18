@@ -4,6 +4,7 @@ import { TimeService } from 'src/app/_services/time.service';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { DatePipe } from '@angular/common';
+import { TimeTask } from 'src/app/_models/time-task';
 
 @Component({
   selector: 'app-project-reports',
@@ -13,7 +14,7 @@ import { DatePipe } from '@angular/common';
 export class ProjectReportsComponent implements OnInit {
 
   //start with the current day
-  public startDate = new Date(new Date().toDateString());
+  public startDate = new Date(new Date().getTime() - 2592000000);
   public endDate = new Date(new Date().toDateString());
   public date: Date[] = [this.startDate, this.endDate];
   public datepipe: DatePipe = new DatePipe('en-US')
@@ -21,6 +22,8 @@ export class ProjectReportsComponent implements OnInit {
 
   user: User;
 
+  tasks: TimeTask[] = [];
+  
   public emailChartType: ChartType;
   public emailChartData: any;
   public emailChartLegendItems: LegendItem[];
@@ -45,7 +48,12 @@ export class ProjectReportsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadCharts();
+    this.updateReport();
+  }
+
+  convertH2M(timeInHour: string){
+    var timeParts = timeInHour.split(":");
+    return Number(timeParts[0]) * 60 + Number(timeParts[1]);
   }
 
   loadCharts() {
@@ -120,6 +128,9 @@ export class ProjectReportsComponent implements OnInit {
     let endDate = this.datepipe.transform(this.date[1], 'dd-MM-YYYY')
 
     this.timeService.getEntriesByDate(this.user.idUser, startDate, endDate, this.accountService.getToken()).subscribe(res => {
+
+      this.tasks = res;
+
 
       console.log(res)
 

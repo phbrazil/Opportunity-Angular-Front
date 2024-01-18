@@ -58,6 +58,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CalendarModule } from 'primeng/calendar';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 @NgModule({
   declarations: [
@@ -123,7 +124,8 @@ import { CalendarModule } from 'primeng/calendar';
     MatIconModule,
     MatDialogModule,
 
-    CalendarModule
+    CalendarModule,
+    ProgressBarModule
 
   ], exports: [
     NavbarComponent,

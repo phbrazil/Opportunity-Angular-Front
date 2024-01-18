@@ -1,10 +1,27 @@
 <div *ngIf="!isLoading" class="col-md-12 mt-4">
   <p-calendar selectionMode="range" [(ngModel)]="date" [showIcon]="true" inputId="icon"></p-calendar>
-  <button class="search-button" pButton type="button" label="Atualizar relatório" (click)="updateReport()" ></button>
-  <div class="row">
-    <div class="col-md-3 mt-4">
+  <button class="search-button" pButton type="button" label="Atualizar relatório" (click)="updateReport()"></button>
+  <div class="row" style="min-height: 20rem;">
 
-      <lbd-chart [title]="'Email Statistics'" [subtitle]="'Last Campaign Performance'"
+
+    <div class="col-md-12 mt-4">
+
+      <div class="card">
+
+        <ng-container *ngFor="let data of tasks; index as i;">
+          <div class="mt-4">
+
+            <h5>{{data.project}} - {{data.task}} - {{data.notes}}</h5>
+            <p-progressBar [style]="{'height': '10px'}" [value]="convertH2M(data.time)" [showValue]="true" class="mt-2"></p-progressBar>
+
+          </div>
+
+        </ng-container>
+
+      </div>
+
+
+      <!--lbd-chart [title]="'Email Statistics'" [subtitle]="'Last Campaign Performance'"
         [chartClass]="'ct-perfect-fourth'" [chartType]="emailChartType" [chartData]="emailChartData"
         [legendItems]="emailChartLegendItems" [withHr]="true" [footerIconClass]="'fa fa-clock-o'"
         [footerText]="'Campaign sent 2 days ago'">
@@ -25,6 +42,6 @@
         [chartResponsive]="activityChartResponsive" [legendItems]="activityChartLegendItems" [withHr]="true"
         [footerIconClass]="'fa fa-check'" [footerText]="'Data information certified'">
       </lbd-chart>
+    </div-->
     </div>
   </div>
-</div>
