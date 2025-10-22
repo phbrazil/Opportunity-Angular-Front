@@ -2,6 +2,7 @@
   <div class="row">
     <p-calendar selectionMode="range" [(ngModel)]="date" [showIcon]="true" inputId="icon"></p-calendar>
     <button class="search-button" pButton type="button" label="Atualizar relatório" (click)="updateReport()" ></button>
+    <h4 class="ml-4">Total de horas: <strong>{{totalHours}}</strong></h4>
   
     <!--div class="col-md-1">
       <a *ngIf="!isOpenCalendar" data-toggle="modal" data-target="#calendarModal" class="margin-calendar-icon">

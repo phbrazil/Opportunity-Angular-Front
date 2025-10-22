@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { pipe } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, take } from 'rxjs/operators';
 import { Settings } from 'src/app/_models/settings';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
@@ -15,10 +15,9 @@ import { ResetPasswordComponent } from '../reset-password/reset-password.compone
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   message: string = '';
   messageType: string = '';
 
@@ -31,68 +30,61 @@ export class LoginComponent implements OnInit {
 
   settings: Settings;
 
-  constructor(private fb: FormBuilder, private alertService: AlertService, public dialog: MatDialog, private router: Router,
-    private accountService: AccountService, private settingsService: SettingsService) {
+  constructor(
+    private fb: FormBuilder,
+    private alertService: AlertService,
+    public dialog: MatDialog,
+    private router: Router,
+    private accountService: AccountService,
+    private settingsService: SettingsService
+  ) {}
 
-  }
-
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   enviar() {
     if (this.formLogin.invalid) {
-
-      this.alertService.error('Dados incorretos', 'tente novamente', { keepAfterRouteChange: true });
-
+      this.alertService.error('Dados incorretos', 'tente novamente', {
+        keepAfterRouteChange: true,
+      });
     } else {
-
-      this.postLogin(this.formLogin)
-
+      this.postLogin(this.formLogin);
     }
-
   }
 
   postLogin(formLogin: FormGroup) {
-
     this.isLoading = true;
 
-    this.accountService.login(formLogin.value.emailLogin, formLogin.value.passwordLogin).subscribe(res => {
+    this.accountService
+      .login(formLogin.value.emailLogin, formLogin.value.passwordLogin)
+      .pipe(take(1))
+      .subscribe(
+        (res) => {
+          if (res.pendingEmailConfirmation) {
+            this.message =
+              'Seu email ainda não foi confirmado, verifique sua caixa de emails';
+            this.messageType = 'danger';
+          } else {
+            this.accountService.setUser(res);
 
-      if (res.pendingEmailConfirmation) {
+            this.accountService.setIsLogged(true);
 
-        this.message = 'Seu email ainda não foi confirmado, verifique sua caixa de emails';
-        this.messageType = 'danger';
+            this.router.navigate(['/time']);
+            this.close();
 
-      } else {
+            //loadSettings
+            this.loadSettings();
+          }
 
-        this.accountService.setUser(res);
+          this.isLoading = false;
+        },
+        (_err) => {
+          this.isLoading = false;
 
-        this.accountService.setIsLogged(true);
+          this.message = 'Verifique seu email e senha';
 
-        this.router.navigate(['/time']);
-        this.close();
-
-
-        //loadSettings
-        this.loadSettings();
-
-
-      }
-
-      this.isLoading = false;
-
-
-    }, _err => {
-
-      this.isLoading = false;
-
-      this.message = 'Verifique seu email e senha';
-
-      this.messageType = 'danger';
-
-    })
-
+          this.messageType = 'danger';
+        }
+      );
   }
 
   close() {
@@ -100,32 +92,41 @@ export class LoginComponent implements OnInit {
   }
 
   getOpportunity() {
-
     this.close();
 
     this.dialog.open(CreateAccountComponent);
   }
 
   resetPassword() {
-
     this.close();
 
     this.dialog.open(ResetPasswordComponent);
-
-
   }
 
   loadSettings() {
     this.isLoading = true;
-    this.accountService.user.pipe(
-      mergeMap((user: User) => this.settingsService.getSettings(user.idUser, this.accountService.getToken()))
-    ).subscribe(res => {
-      this.settingsService.setSettings(res);
-      this.isLoading = false;
-    }, _err => {
-      this.alertService.error('Ocorreu um erro', 'tente novamente mais tarde', { keepAfterRouteChange: true });
-      this.isLoading = false;
-    })
+    this.accountService.user
+      .pipe(
+        mergeMap((user: User) =>
+          this.settingsService.getSettings(
+            user.idUser,
+            this.accountService.getToken()
+          )
+        )
+      )
+      .subscribe(
+        (res) => {
+          this.settingsService.setSettings(res);
+          this.isLoading = false;
+        },
+        (_err) => {
+          this.alertService.error(
+            'Ocorreu um erro',
+            'tente novamente mais tarde',
+            { keepAfterRouteChange: true }
+          );
+          this.isLoading = false;
+        }
+      );
   }
-
 }

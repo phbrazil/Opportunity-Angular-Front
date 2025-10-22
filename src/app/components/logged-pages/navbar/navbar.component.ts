@@ -6,14 +6,14 @@ import { Plan } from 'src/app/_models/plan';
 import { PlanService } from 'src/app/_services/plan.service';
 import { SettingsService } from 'src/app/_services/settings.service';
 import { Settings } from 'src/app/_models/settings';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-
   isLoading: boolean = false;
 
   user: User;
@@ -28,66 +28,71 @@ export class NavbarComponent implements OnInit {
   settings: Settings;
 
   fileType: string = 'png';
-  base64: string = "data:image/" + this.fileType + ";base64,";
+  base64: string = 'data:image/' + this.fileType + ';base64,';
 
-  constructor(private accountService: AccountService,
+  constructor(
+    private accountService: AccountService,
     private planService: PlanService,
-    private settingsService: SettingsService) {
+    private settingsService: SettingsService
+  ) {
+    this.accountService.user.subscribe((x) => (this.user = x));
 
-    this.accountService.user.subscribe(x => this.user = x);
-
-    this.settingsService.settings.subscribe(x => this.settings = x);
-
+    this.settingsService.settings.subscribe((x) => (this.settings = x));
   }
 
   ngOnInit(): void {
-
     //reload navbar if plan change
-    this.planService.getIsReload().subscribe(status => {
-      if (status != null && status) {
-        if (this.user.admin) {
-          this.getPlan();
+    this.planService
+      .getIsReload()
+      .pipe(take(1))
+      .subscribe((status) => {
+        if (status != null && status) {
+          if (this.user.admin) {
+            this.getPlan();
+          }
         }
-      }
-    })
+      });
 
     this.getPlan();
 
     for (var i = 0; i < this.user.name.length; i++) {
       if (this.user.name.charAt(i) == ' ') {
-        break
+        break;
       }
       this.name = this.name + this.user.name.charAt(i);
     }
 
-    this.settingsService.settings.subscribe(settings =>{
-      this.settings = settings;
-      if(this.settings == null){
-        this.settings = {defaultColor: 'nav-green'} as Settings;
+    this.settingsService.settings.subscribe(
+      (settings) => {
+        this.settings = settings;
+        if (this.settings == null) {
+          this.settings = { defaultColor: 'nav-green' } as Settings;
+        }
+      },
+      (_err) => {
+        this.settings = { defaultColor: 'nav-green' } as Settings;
+        console.log(_err);
       }
-    }, _err =>{
-     this.settings = {defaultColor: 'nav-green'} as Settings;
-      console.log(_err);
-    })
-
+    );
   }
 
   logout() {
-
     this.accountService.logout();
-
   }
 
   getPlan() {
     //CHECK USER ROLES
-    this.planService.getPlan(this.user.idUser, this.accountService.getToken()).subscribe(plan => {
-
-      this.planService.setPlan(plan);
-      this.plan = plan;
-
-    }, _err => {
-      this.accountService.logout();
-    });
+    this.planService
+      .getPlan(this.user.idUser, this.accountService.getToken())
+      .pipe(take(1))
+      .subscribe(
+        (plan) => {
+          this.planService.setPlan(plan);
+          this.plan = plan;
+        },
+        (_err) => {
+          this.accountService.logout();
+        }
+      );
   }
-
 }

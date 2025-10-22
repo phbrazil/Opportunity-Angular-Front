@@ -131,9 +131,6 @@ export class ProjectReportsComponent implements OnInit {
 
       this.tasks = res;
 
-
-      console.log(res)
-
       this.isLoading = false;
 
     });

@@ -10,17 +10,18 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-time-reports',
   templateUrl: './time-reports.component.html',
-  styleUrls: ['./time-reports.component.scss']
+  styleUrls: ['./time-reports.component.scss'],
 })
 export class TimeReportsComponent implements OnInit {
-
   hoveredDate: NgbDate | null = null;
+
+  public totalHours: string = '00:00';
 
   //start with the current day
   public startDate = new Date(new Date().getTime() - 2592000000);
   public endDate = new Date(new Date().toDateString());
   public date: Date[] = [this.startDate, this.endDate];
-  public datepipe: DatePipe = new DatePipe('en-US')
+  public datepipe: DatePipe = new DatePipe('en-US');
   //public minDateValue = new Date();
 
   user: User;
@@ -44,16 +45,20 @@ export class TimeReportsComponent implements OnInit {
     }
 
     if (this.toDate != null) {
-
       this.isOpenCalendar = false;
 
       this.loadTasks();
-
     }
   }
 
   isHovered(date: NgbDate) {
-    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
+    return (
+      this.fromDate &&
+      !this.toDate &&
+      this.hoveredDate &&
+      date.after(this.fromDate) &&
+      date.before(this.hoveredDate)
+    );
   }
 
   isInside(date: NgbDate) {
@@ -61,22 +66,26 @@ export class TimeReportsComponent implements OnInit {
   }
 
   isRange(date: NgbDate) {
-
-    return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
-
+    return (
+      date.equals(this.fromDate) ||
+      (this.toDate && date.equals(this.toDate)) ||
+      this.isInside(date) ||
+      this.isHovered(date)
+    );
   }
 
-  constructor(calendar: NgbCalendar, private accountService: AccountService, private timeService: TimeService) {
+  constructor(
+    calendar: NgbCalendar,
+    private accountService: AccountService,
+    private timeService: TimeService
+  ) {
     this.fromDate = calendar.getPrev(calendar.getToday(), 'd', 10);
     this.toDate = calendar.getToday();
-    this.accountService.user.subscribe(x => this.user = x);
-
+    this.accountService.user.subscribe((x) => (this.user = x));
   }
 
   ngOnInit(): void {
-
     this.loadTasks();
-
   }
 
   openCalendar() {
@@ -84,30 +93,53 @@ export class TimeReportsComponent implements OnInit {
   }
 
   loadTasks() {
-
     this.isLoading = true;
 
-    let startDate = this.datepipe.transform(this.date[0], 'dd-MM-YYYY')
-    let endDate = this.datepipe.transform(this.date[1], 'dd-MM-YYYY')
+    let startDate = this.datepipe.transform(this.date[0], 'dd-MM-YYYY');
+    let endDate = this.datepipe.transform(this.date[1], 'dd-MM-YYYY');
 
-    this.timeService.getEntriesByDate(this.user.idUser, startDate, endDate, this.accountService.getToken()).subscribe(res => {
+    this.timeService
+      .getEntriesByDate(
+        this.user.idUser,
+        startDate,
+        endDate,
+        this.accountService.getToken()
+      )
+      .subscribe(
+        (res) => {
+          this.isLoading = false;
+          this.tasks = res;
+          this.sumHours();
+        },
+        (_err) => {
+          this.isLoading = false;
+        }
+      );
+  }
 
-      this.isLoading = false;
+  private sumHours(): void {
+    this.totalHours = '00:00';
 
-      this.tasks = res;
+    this.tasks.forEach((task) => {
+      const [h1, m1] = task.time.split(':').map(Number);
+      const [h2, m2] = this.totalHours.split(':').map(Number);
 
-    }, _err => {
+      let totalMinutes = h1 * 60 + m1 + h2 * 60 + m2;
 
-      this.isLoading = false;
+      const hours = Math.floor(totalMinutes / 60);
+      const minutes = totalMinutes % 60;
 
-    })
+      this.totalHours = `${hours.toString().padStart(2, '0')}:${minutes
+        .toString()
+        .padStart(2, '0')}`;
+    });
   }
 
   generateImage() {
-
     var node: any = document.getElementById('image-section');
 
-    htmlToImage.toPng(node)
+    htmlToImage
+      .toPng(node)
       .then(function (dataUrl) {
         var img = new Image();
         img.src = dataUrl;
@@ -120,18 +152,22 @@ export class TimeReportsComponent implements OnInit {
 
   public updateReport(): void {
     this.isLoading = true;
-    const datepipe: DatePipe = new DatePipe('en-US')
-    let startDate = datepipe.transform(this.date[0], 'dd-MM-YYYY')
-    let endDate = datepipe.transform(this.date[1], 'dd-MM-YYYY')
+    const datepipe: DatePipe = new DatePipe('en-US');
+    let startDate = datepipe.transform(this.date[0], 'dd-MM-YYYY');
+    let endDate = datepipe.transform(this.date[1], 'dd-MM-YYYY');
 
+    this.timeService
+      .getEntriesByDate(
+        this.user.idUser,
+        startDate,
+        endDate,
+        this.accountService.getToken()
+      )
+      .subscribe((res) => {
+        this.isLoading = false;
 
-    this.timeService.getEntriesByDate(this.user.idUser, startDate, endDate, this.accountService.getToken()).subscribe(res => {
-      this.isLoading = false;
-
-      this.tasks = res;
-
-    })
-
+        this.tasks = res;
+        this.sumHours();
+      });
   }
-
 }
