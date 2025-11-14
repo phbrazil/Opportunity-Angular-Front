@@ -1,0 +1,159 @@
+:host {
+  display: block;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  color: #1f2937;
+}
+
+/* Container padrão */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+/* ---------------- HERO & NAV ---------------- */
+
+.lp-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  height: 40px;
+  width: 40px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+/* ---------------- BUTTONS ---------------- */
+
+.btn-primary {
+  background: linear-gradient(90deg, #556ee6, #7b61ff);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #e6e9f2;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+}
+
+/* ---------------- HERO ---------------- */
+
+.lp-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 3rem 0;
+  text-align: center;
+
+  @media (min-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+  }
+}
+
+.hero-content h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ---------------- FEATURES ---------------- */
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------------- INTEGRATION SECTION ---------------- */
+
+.integration-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .integration-text {
+    margin-top: 2rem;
+  }
+}
+
+pre.code-sample {
+  background: #0b1220;
+  color: #cbd5e1;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow: auto;
+  font-size: 0.85rem;
+}
+
+.note {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.card {
+  border: 1px solid #eef2ff;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  background: white;
+  transition: transform 0.2s ease;
+
+  &.featured {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 24px rgba(80, 70, 200, 0.08);
+  }
+}
+
+/* ---------------- FOOTER ---------------- */
+
+.lp-footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 1.5rem 0;
+  margin-top: 2rem;
+}
+
+/* ---------------- MOBILE NAV ---------------- */
+
+@media (max-width: 800px) {
+  .nav-links {
+    display: none;
+  }
+}

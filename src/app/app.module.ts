@@ -28,6 +28,7 @@ import { RouterModule } from '@angular/router';
 import { InterceptorModule } from './_services/interceptor.module';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 registerLocaleData(localePT);
 
@@ -43,7 +44,8 @@ registerLocaleData(localePT);
     HomeComponent,
     ResetPasswordComponent,
     PricingComponent,
-    ConfirmPasswordComponent
+    ConfirmPasswordComponent,
+    LandingPageComponent 
   ],
   imports: [
     BrowserModule,

@@ -36,7 +36,7 @@ export class PricingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getOpportunity(plan: string) {
+  getOpportunity() {
     this.dialog.open(CreateAccountComponent);
   }
 
@@ -176,4 +176,5 @@ export class PricingComponent implements OnInit {
     this.calcPricingCorp();
 
   }
+  
 }

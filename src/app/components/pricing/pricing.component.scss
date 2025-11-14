@@ -1,60 +1,46 @@
-
-
-.active {
-  background-color: #d2f8d2;
-  color: black;
+.btn-primary {
+  background: linear-gradient(90deg, #556ee6, #7b61ff);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 
-.pricing-font {
-  font-size: 40px;
-  text-align: center;
-  height: 65px;
-  width: 65px;
-
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
 }
 
-.form-control {
-  align-self: center;
-  display: block;
-  width: 65px;
-  height: 65px;
-  padding: 6px 12px;
-  line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-
-}
-
-
-.footer {
-  position: absolute;
-  bottom: 0;
-}
-
-.zoom {
-  transition: transform .2s;
-  /* Animation */
-}
-
-.zoom:hover {
-  transform: scale(1.2);
-  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
-
-.row_inline {
-  display: flex;
-  /* flex-wrap: wrap; */
-  margin-right: -15px;
-  margin-left: -15px;
-}
-
-.glass{
-  backdrop-filter: blur(0px) saturate(200%);
-  -webkit-backdrop-filter: blur(0px) saturate(200%);
-  background-color: rgba(246, 246, 246, 0.95);
+.pricing-grid .card {
+  background: #fff;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 30px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Faz os botões ficarem alinhados */
+  min-height: 320px; /* 🔥 garante altura igual */
+}
+
+.pricing-grid .card h4 {
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
+
+.pricing-grid .card .items p {
+  margin: 4px 0;
+  font-size: 1.5rem;
+}
+
+.pricing-grid .card strong {
+  margin: 20px 0;
+  font-size: 1.8rem;
+}
+
+.pricing-grid .card button {
+  margin-top: auto; /* 🔥 força o botão para o final */
+  width: 100%;
 }
