@@ -1,1 +1,52 @@
 @import url('https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css');
+.footer-wrapper {
+  padding: 0 10px;
+
+  h5 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .newsletter-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+
+    input {
+      flex: 1;
+    }
+
+    button {
+      white-space: nowrap;
+    }
+  }
+
+  .footer-bottom p {
+    font-size: 0.9rem;
+  }
+}
+
+/* 📱 MOBILE RESPONSIVE */
+@media (max-width: 576px) {
+  .footer-wrapper {
+    text-align: center;
+
+    .newsletter-group {
+      flex-direction: column;
+      align-items: stretch;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 15px;
+
+      .social-links {
+        justify-content: center;
+      }
+    }
+  }
+}
