@@ -1,24 +1,27 @@
-@import url('https://fonts.cdnfonts.com/css/gilroy-bold');
-@import url('https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css');
-@import 'https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap';
-@import url('https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.css');
+@import url("https://fonts.cdnfonts.com/css/gilroy-bold");
+@import url("https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css");
+@import "https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.css");
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
-html, body {
+html,
+body {
   overflow-x: scroll;
-  padding: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-bottom: 115px;
-  clear: both;
+  background:
+    radial-gradient(
+      circle at 92% 35%,
+      rgba(39, 107, 103, 0.22),
+      transparent 36%
+    ),
+    linear-gradient(110deg, #111722 0%, #080c13 53%, #0d2528 100%);
 }
 
 :root {
   --background-color: #f6f6f6;
   --background-Black: #1c181e;
-  --primary-color: #2E8B57;
+  --primary-color: #2e8b57;
   --secondary-color: #1c181e;
-  --danger-color: #DC143C;
+  --danger-color: #dc143c;
   --text-color: #6c6c6c;
   --text-color-light: #90949c;
   --text-white: #fff;
@@ -26,21 +29,20 @@ html, body {
 }
 
 .title-home {
-  color: #0A273D;
+  color: #0a273d;
   font-size: 42px;
-  font-family: 'Amatic SC';
+  font-family: "Amatic SC";
 }
 
 .font-home {
-  color: #0A273D;
+  color: #0a273d;
   font-size: 20px;
-  font-family: 'Amatic SC';
+  font-family: "Amatic SC";
 }
 
-
 .default-font {
-  color: #0A273D;
-  font-family: 'Amatic SC';
+  color: #0a273d;
+  font-family: "Amatic SC";
   font-size: 2rem;
   font-weight: bold;
 }
@@ -53,7 +55,7 @@ html, body {
 }
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 //EVITAR DESALINHAMENTO SCROLL QUANDO USA MAT DIALOG
 .cdk-global-overlay-wrapper {
@@ -68,12 +70,12 @@ html, body {
 
 body {
   margin: 20px auto;
-  font-family: 'Lato';
+  font-family: "Lato";
   background: #666;
   color: #fff;
 }
 
-.bg-color{
+.bg-color {
   background-color: #fff;
   overflow: hidden;
 }
@@ -89,7 +91,7 @@ h2 {
 }
 
 p {
-  font-family: 'Amatic SC';
+  font-family: "Amatic SC";
   font-size: 2rem;
 }
 
@@ -112,9 +114,9 @@ ul li a {
   height: 15em;
   width: 20em;
   padding: 1em;
-  box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
+  box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
   transform: rotate(-6deg);
-  transition: transform .15s linear;
+  transition: transform 0.15s linear;
 }
 
 ul li:nth-child(even) a {
@@ -139,7 +141,7 @@ ul li:nth-child(5n) a {
 
 ul li a:hover,
 ul li a:focus {
-  box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+  box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
   transform: scale(1.25);
   position: relative;
   z-index: 5;
@@ -154,7 +156,6 @@ ul li {
   margin-top: 100px;
 }
 
-
 .btn-custom-confirm {
   transition: all 0.3s linear 0s;
   color: black;
@@ -162,17 +163,16 @@ ul li {
   //border: 0.0625rem solid var(--primary-color);
   transform: skewX(-10deg);
   font-size: 1.2rem;
-  font-family: 'Amatic SC';
+  font-family: "Amatic SC";
   line-height: 0.875rem;
   padding: 1rem 1.875rem;
-//  text-transform: unset;
+  //  text-transform: unset;
   font-weight: 600;
   cursor: pointer;
   text-transform: uppercase;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   border-color: var(--primary-color);
-	border-width: 3px;
-
+  border-width: 3px;
 }
 
 .btn-custom-confirm:hover {
@@ -187,14 +187,14 @@ ul li {
   //border: 0.0625rem solid var(--secondary-color);
   transform: skewX(-10deg);
   font-size: 1.2rem;
-  font-family: 'Amatic SC';
+  font-family: "Amatic SC";
   line-height: 0.875rem;
   padding: 1rem 1.875rem;
   //text-transform: unset;
   font-weight: 600;
   cursor: pointer;
   text-transform: uppercase;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .btn-custom-decline:hover {
@@ -209,14 +209,14 @@ ul li {
   //border: 0.0625rem solid var(--danger-color);
   transform: skewX(-10deg);
   font-size: 1.2rem;
-  font-family: 'Amatic SC';
+  font-family: "Amatic SC";
   line-height: 0.875rem;
   padding: 1rem 1.875rem;
   //text-transform: unset;
   font-weight: 600;
   cursor: pointer;
   text-transform: uppercase;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .btn-custom-reject:hover {
@@ -238,5 +238,3 @@ ul li {
 }
 
 // https://ui.glass/generator/
-
-

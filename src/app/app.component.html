@@ -1,16 +1,9 @@
-<app-alert class="transparencia-alert col-md-12 mt-4"></app-alert>
+<p-toast position="top-right"></p-toast>
+
 <div *ngIf="!user; else logged">
-  <app-header></app-header>
-  <app-working-progress></app-working-progress>
-  <!--app-try-free></app-try-free-->
-  <app-landing-page></app-landing-page>
-  <app-pricing></app-pricing>
-  <app-clients></app-clients>
-  <app-footer></app-footer>
+  <app-demo-landing-page></app-demo-landing-page>
 </div>
 
 <ng-template #logged>
-
   <router-outlet></router-outlet>
-
 </ng-template>

@@ -29,6 +29,10 @@ import { InterceptorModule } from './_services/interceptor.module';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { DemoLandingPageComponent } from './components/demo-landing-page/demo-landing-page.component';
+import { DemoRequestModalComponent } from './components/demo-request-modal/demo-request-modal.component';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 registerLocaleData(localePT);
 
@@ -45,7 +49,9 @@ registerLocaleData(localePT);
     ResetPasswordComponent,
     PricingComponent,
     ConfirmPasswordComponent,
-    LandingPageComponent 
+    LandingPageComponent,
+    DemoLandingPageComponent,
+    DemoRequestModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,16 +66,14 @@ registerLocaleData(localePT);
     HttpClientModule,
     NgbModule,
     RouterModule,
-    InterceptorModule
-    ],
-  providers: [
-    {  provide: LOCALE_ID, useValue: 'pt-BR' },
-    CurrencyPipe
+    InterceptorModule,
+    ToastModule,
   ],
-  bootstrap: [AppComponent]
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }, CurrencyPipe, MessageService],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
-    constructor() {
-      library.add(faFilm, faFish);
-    }
+  constructor() {
+    library.add(faFilm, faFish);
+  }
 }
