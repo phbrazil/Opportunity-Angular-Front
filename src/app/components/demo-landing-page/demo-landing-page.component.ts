@@ -11,23 +11,23 @@ import { DemoRequestModalComponent } from '../demo-request-modal/demo-request-mo
 export class DemoLandingPageComponent {
   readonly paymentRows = [
     {
-      code: 'B-118',
-      name: 'Nordwind AG - Fatura 8841',
-      amount: '€48.200',
+      code: 'PAG-1182',
+      name: 'Hotel Copacabana Palace - NF 8841',
+      amount: 'R$ 48.200',
       status: 'Aprovado',
       tone: 'approved',
     },
     {
-      code: 'B-119',
-      name: 'Helvetia Logistics - PO 2201',
-      amount: '€36.100',
+      code: 'PAG-1193',
+      name: 'Buffet Trigo & Cia - Pedido 2201',
+      amount: 'R$ 36.100',
       status: 'Pendente',
       tone: 'pending',
     },
     {
-      code: 'B-120',
-      name: 'Rheinwerk GmbH - Fatura 9020',
-      amount: '€128.000',
+      code: 'PAG-1204',
+      name: 'Feira e Exposição Anual - NF 9020',
+      amount: 'R$ 128.000',
       status: 'Escalado',
       tone: 'escalated',
     },

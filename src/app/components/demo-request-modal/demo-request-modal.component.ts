@@ -19,7 +19,7 @@ export class DemoRequestModalComponent {
     email: ['', [Validators.required, Validators.email]],
     tel: ['', Validators.required],
     subject: ['', Validators.required],
-    message: ['', Validators.required],
+    textarea: ['', Validators.required],
   });
 
   private isLoadingSubject = new BehaviorSubject<boolean>(false);

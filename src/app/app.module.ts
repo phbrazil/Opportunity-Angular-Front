@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { TryFreeComponent } from './components/try-free/try-free.component';
-import { ClientsComponent } from './components/clients/clients.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { AngularMaterialModule } from './components/shared/angular-material/angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,12 +21,10 @@ import { faFilm, faFish } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PricingComponent } from './components/pricing/pricing.component';
 import { RouterModule } from '@angular/router';
 import { InterceptorModule } from './_services/interceptor.module';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { DemoLandingPageComponent } from './components/demo-landing-page/demo-landing-page.component';
 import { DemoRequestModalComponent } from './components/demo-request-modal/demo-request-modal.component';
 import { MessageService } from 'primeng/api';
@@ -41,15 +37,11 @@ registerLocaleData(localePT);
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    TryFreeComponent,
-    ClientsComponent,
     CreateAccountComponent,
     LoginComponent,
     HomeComponent,
     ResetPasswordComponent,
-    PricingComponent,
     ConfirmPasswordComponent,
-    LandingPageComponent,
     DemoLandingPageComponent,
     DemoRequestModalComponent,
   ],

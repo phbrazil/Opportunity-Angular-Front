@@ -4,6 +4,6 @@ export interface Contact {
   email: string;
   tel: string;
   subject: string;
-  message: string;
+  textarea: string;
   createdAt?: string;
 }

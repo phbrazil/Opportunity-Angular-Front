@@ -108,13 +108,13 @@
     <label class="field full-width">
       <span>Mensagem</span>
       <textarea
-        formControlName="message"
+        formControlName="textarea"
         rows="4"
         placeholder="Digite sua mensagem"
       ></textarea>
       <small
         *ngIf="
-          demoForm.controls.message.touched && demoForm.controls.message.invalid
+          demoForm.controls.textarea.touched && demoForm.controls.textarea.invalid
         "
         >Digite uma mensagem.</small
       >

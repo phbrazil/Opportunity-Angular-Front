@@ -20,38 +20,38 @@
 
   <section class="hero" id="top">
     <div class="hero-copy">
-      <p class="eyebrow"><span aria-hidden="true"></span> SAP B1 · C4C NATIVO</p>
-      <h1>Pagamentos,<br />roteados como<br />papel sobre uma<br />mesa decisória.</h1>
+      <p class="eyebrow"><span aria-hidden="true"></span> SAP BUSINESS ONE · SAP C4C · INTEGRAÇÃO NATIVA</p>
+      <h1>Pagamentos,<br />aprovados por<br />alçada, direto<br />do seu SAP.</h1>
       <p class="hero-description">
-        Crie, aprove e reconcilie pagamentos com ganchos nativos ao SAP Business One e contexto de projetos do SAP CRM C4C. Recursos customizados, fluxos de aprovação e trilha de auditoria completa - sem planilhas no meio.
+        Solicite pagamentos, adiantamentos e prestações de contas com anexo de comprovantes, aprovação por alçada com níveis customizáveis e contexto de projetos e clientes sincronizado direto do SAP C4C CRM. Tudo integrado ao SAP Business One - sem planilha no meio.
       </p>
       <div class="hero-actions">
-        <a class="primary-action" href="#demo">Iniciar um payment run <span aria-hidden="true">↗</span></a>
-        <a class="text-action" href="#fluxo">Ver o fluxo <span aria-hidden="true">→</span></a>
+        <a class="primary-action" href="#demo">Solicitar um pagamento <span aria-hidden="true">↗</span></a>
+        <a class="text-action" href="#fluxo">Ver o fluxo de aprovação <span aria-hidden="true">→</span></a>
       </div>
       <div class="metrics" aria-label="Indicadores do produto">
-        <div><strong>98%</strong><span>auto-conciliado</span></div>
-        <div><strong>4.2s</strong><span>aprovação mediana</span></div>
+        <div><strong>100%</strong><span>comprovantes anexados</span></div>
+        <div><strong>100%</strong><span>alçadas customizáveis</span></div>
         <div><strong>100%</strong><span>trilha de auditoria</span></div>
       </div>
     </div>
 
     <div class="payment-board" id="aprovacoes" aria-label="Resumo de um ciclo de pagamentos">
       <div class="board-header">
-        <p><span class="status-dot" aria-hidden="true"></span> PAYMENT RUN <b>·</b> ABR-2041</p>
+        <p><span class="status-dot" aria-hidden="true"></span> CICLO DE PAGAMENTOS <b>·</b> OUT/2025</p>
         <span class="pending-count">2 pendentes</span>
       </div>
 
       <div class="board-summary">
         <div class="summary-card">
           <span>Este ciclo</span>
-          <strong>€1.284.900</strong>
-          <small>+12,4% vs MAR</small>
+          <strong>R$ 1.284.900</strong>
+          <small>+12,4% vs SET</small>
         </div>
         <div class="summary-card warning-card">
           <span>Aguardando aprovação</span>
-          <strong>€212.300</strong>
-          <small>3 compradores</small>
+          <strong>R$ 212.300</strong>
+          <small>3 aprovadores</small>
         </div>
       </div>
 
@@ -67,7 +67,7 @@
       <div class="flow-footer" id="fluxo">
         <span>FLUXO</span>
         <div class="flow-steps">
-          <b>Rascunho</b><i>›</i><b>Revisão</b><i>›</i><b class="active">Aprovar</b><i>›</i><b>Reconciliar</b>
+          <b>Solicitado</b><i>›</i><b>Comprovante</b><i>›</i><b class="active">Aprovação por Alçada</b><i>›</i><b>Pago</b>
         </div>
       </div>
     </div>
@@ -79,58 +79,58 @@
         <p class="section-eyebrow">INTEGRAÇÕES NATIVAS</p>
         <h2 id="integrations-title">Conectado aos sistemas que<br />o seu financeiro já confia.</h2>
       </div>
-      <span class="connector-version">v2.4 · conectores certificados</span>
+      <span class="connector-version">sincronização automática</span>
     </div>
 
     <div class="integration-cards">
       <article class="integration-card sap-b1-card">
         <span class="integration-mark" aria-hidden="true"></span>
         <p class="integration-label">SAP BUSINESS ONE</p>
-        <h3>Objetos de pagamento bidirecionais</h3>
+        <h3>Pagamentos e fornecedores, sem retrabalho</h3>
         <p class="integration-description">
-          Envie payment runs aprovados de volta como documentos de pagamento. O cadastro de fornecedores e o mapeamento de contas contábeis permanecem no B1, intactos.
+          Pagamentos aprovados viram documentos de pagamento no B1 automaticamente, com trilha de auditoria completa. O cadastro de fornecedores e o plano de contas continuam no B1, sem duplicidade.
         </p>
-        <span class="integration-route">/b1/payments.sync → push</span>
+        <span class="integration-route">Pagamentos aprovados → SAP B1</span>
       </article>
 
       <article class="integration-card sap-c4c-card">
         <span class="integration-mark" aria-hidden="true"></span>
         <p class="integration-label">SAP CRM C4C</p>
-        <h3>Contexto de projetos, não criação de pagamentos</h3>
+        <h3>Projetos e clientes, sempre atualizados</h3>
         <p class="integration-description">
-          Leia projetos e contexto do cliente do C4C para que cada pagamento seja etiquetado da iniciativa, orçamento e conta certos - sem sair do modelo de dados SAP.
+          Projetos e contas de clientes são sincronizados automaticamente do C4C, para que cada pagamento e prestação de contas fique vinculado ao projeto, orçamento e cliente certos.
         </p>
-        <span class="integration-route">/c4c/projects.read → enriquecer</span>
+        <span class="integration-route">SAP C4C → Projetos e Clientes</span>
       </article>
     </div>
   </section>
 
   <section class="embedded-modules" id="dashboards" aria-labelledby="modules-title">
     <div class="modules-heading">
-      <p class="section-eyebrow">MÓDULOS EMBUTIDOS</p>
-      <h2 id="modules-title">Quatro coisas, feitas com limpeza.</h2>
+      <p class="section-eyebrow">MÓDULOS DA PLATAFORMA</p>
+      <h2 id="modules-title">Do pedido ao pagamento, num só lugar.</h2>
     </div>
 
     <div class="module-grid">
       <article class="module-item">
         <span class="module-number">01</span>
-        <h3>Recursos customizados de pagamento</h3>
-        <p>Regras em nível de campo, retenções de moeda e roteamento de fornecedores que você define uma vez.</p>
+        <h3>Pagamentos e fornecedores</h3>
+        <p>Solicite pagamentos a fornecedores com nota fiscal e comprovante anexados, parcelamento e forma de pagamento definidos por você.</p>
       </article>
       <article class="module-item">
         <span class="module-number">02</span>
-        <h3>Fluxos de aprovação</h3>
-        <p>Cadeias baseadas em limites com escalonamento e uma decisão clara: aprovar ou devolver.</p>
+        <h3>Aprovação por alçada</h3>
+        <p>Fluxos com níveis customizáveis por valor, aprovadores por perfil e uma decisão clara: aprovar ou devolver.</p>
       </article>
       <article class="module-item">
         <span class="module-number">03</span>
-        <h3>Dashboards</h3>
-        <p>Exposição por payment run, envelhecimento e exceções em uma única grade.</p>
+        <h3>Projetos e clientes</h3>
+        <p>Projetos e contas de clientes sincronizados automaticamente do SAP C4C CRM, sempre vinculados ao pagamento certo.</p>
       </article>
       <article class="module-item">
         <span class="module-number">04</span>
-        <h3>Reconciliação</h3>
-        <p>Auto-conciliação com registros bancários e do C4C; o restante é sinalizado para um humano.</p>
+        <h3>Dashboard e auditoria</h3>
+        <p>Visão consolidada de pagamentos, pendências e exceções, com trilha de auditoria integrada ao SAP Business One.</p>
       </article>
     </div>
   </section>
@@ -139,13 +139,13 @@
     <p class="section-eyebrow">CONFIANÇA EMPRESARIAL</p>
     <h2 id="audit-title">A trilha de auditoria que seus<br />auditores realmente vão ler.</h2>
     <p class="audit-description">
-      Cada carimbo, substituição e aprovação é versionada e assinada. SSO, acesso baseado em funções e logs imutáveis ativos desde o primeiro dia.
+      Cada pagamento, aprovação e comprovante fica registrado com usuário, papel e data. Login por JWT, permissões por papel (perfis e alçadas) e histórico de sessões ativos desde o primeiro dia.
     </p>
     <div class="audit-tags" aria-label="Recursos de segurança">
-      <span>SSO / SCIM</span>
-      <span>ISO 27001</span>
-      <span>Logs imutáveis</span>
-      <span>Regiões UE e EUA</span>
+      <span>Autenticação JWT</span>
+      <span>Permissões por papel</span>
+      <span>Comprovantes anexados</span>
+      <span>Hospedado no Brasil</span>
     </div>
   </section>
 </main>
