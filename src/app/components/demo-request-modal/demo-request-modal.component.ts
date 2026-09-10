@@ -17,7 +17,7 @@ export class DemoRequestModalComponent {
     name: ['', Validators.required],
     company: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    phone: ['', Validators.required],
+    tel: ['', Validators.required],
     subject: ['', Validators.required],
     message: ['', Validators.required],
   });

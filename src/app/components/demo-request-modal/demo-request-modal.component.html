@@ -74,14 +74,14 @@
         <span>Telefone</span>
         <input
           type="phone"
-          formControlName="phone"
+          formControlName="tel"
           placeholder="(00) 00000-0000"
           autocomplete="tel"
           mask="(00) 00000-0000"
         />
         <small
           *ngIf="
-            demoForm.controls.phone.touched && demoForm.controls.phone.invalid
+            demoForm.controls.tel.touched && demoForm.controls.tel.invalid
           "
           >Informe seu telefone.</small
         >
