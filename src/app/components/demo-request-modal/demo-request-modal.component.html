@@ -1,18 +1,14 @@
 <div class="demo-modal" role="dialog" aria-labelledby="demo-modal-title">
   <div class="modal-heading">
     <div>
-      <p class="eyebrow">
-        OPPORTUNITY <span aria-hidden="true"></span> DEMONSTRAÇÃO
-      </p>
-      <h2 id="demo-modal-title">Agende uma demonstração</h2>
-      <p class="modal-subtitle">
-        Conte um pouco sobre você e nossa equipe entrará em contato.
-      </p>
+      <p class="eyebrow">{{ copy.eyebrow }}</p>
+      <h2 id="demo-modal-title">{{ copy.title }}</h2>
+      <p class="modal-subtitle">{{ copy.subtitle }}</p>
     </div>
     <button
       type="button"
       class="close-button"
-      aria-label="Fechar"
+      [attr.aria-label]="copy.close"
       (click)="close()"
     >
       &times;
@@ -22,27 +18,27 @@
   <form [formGroup]="demoForm" (ngSubmit)="submit()" novalidate>
     <div class="field-grid">
       <label class="field">
-        <span>Nome</span>
+        <span>{{ copy.name }}</span>
         <input
           type="text"
           formControlName="name"
-          placeholder="Seu nome"
+          [placeholder]="copy.namePlaceholder"
           autocomplete="name"
         />
         <small
           *ngIf="
             demoForm.controls.name.touched && demoForm.controls.name.invalid
           "
-          >Informe seu nome.</small
+          >{{ copy.requiredName }}</small
         >
       </label>
 
       <label class="field">
-        <span>Empresa</span>
+        <span>{{ copy.company }}</span>
         <input
           type="text"
           formControlName="company"
-          placeholder="Nome da empresa"
+          [placeholder]="copy.companyPlaceholder"
           autocomplete="organization"
         />
         <small
@@ -50,32 +46,32 @@
             demoForm.controls.company.touched &&
             demoForm.controls.company.invalid
           "
-          >Informe sua empresa.</small
+          >{{ copy.requiredCompany }}</small
         >
       </label>
 
       <label class="field">
-        <span>Email</span>
+        <span>{{ copy.email }}</span>
         <input
           type="email"
           formControlName="email"
-          placeholder="email@dominio.com"
+          [placeholder]="copy.emailPlaceholder"
           autocomplete="email"
         />
         <small
           *ngIf="
             demoForm.controls.email.touched && demoForm.controls.email.invalid
           "
-          >Informe um e-mail válido.</small
+          >{{ copy.requiredEmail }}</small
         >
       </label>
 
       <label class="field">
-        <span>Telefone</span>
+        <span>{{ copy.phone }}</span>
         <input
           type="phone"
           formControlName="tel"
-          placeholder="(00) 00000-0000"
+          [placeholder]="copy.phonePlaceholder"
           autocomplete="tel"
           mask="(00) 00000-0000"
         />
@@ -83,40 +79,40 @@
           *ngIf="
             demoForm.controls.tel.touched && demoForm.controls.tel.invalid
           "
-          >Informe seu telefone.</small
+          >{{ copy.requiredPhone }}</small
         >
       </label>
     </div>
 
     <label class="field full-width">
-      <span>Assunto</span>
+      <span>{{ copy.subject }}</span>
       <select formControlName="subject">
-        <option value="" disabled>Selecione...</option>
-        <option value="payment-automation">Automação de pagamentos</option>
-        <option value="sap-integration">Integração com SAP</option>
-        <option value="approval-flow">Fluxo de aprovação</option>
-        <option value="other">Outro assunto</option>
+        <option value="" disabled>{{ copy.subjectPlaceholder }}</option>
+        <option value="payment-automation">{{ copy.subjects[0] }}</option>
+        <option value="sap-integration">{{ copy.subjects[1] }}</option>
+        <option value="approval-flow">{{ copy.subjects[2] }}</option>
+        <option value="other">{{ copy.subjects[3] }}</option>
       </select>
       <small
         *ngIf="
           demoForm.controls.subject.touched && demoForm.controls.subject.invalid
         "
-        >Selecione um assunto.</small
+        >{{ copy.requiredSubject }}</small
       >
     </label>
 
     <label class="field full-width">
-      <span>Mensagem</span>
+      <span>{{ copy.message }}</span>
       <textarea
         formControlName="textarea"
         rows="4"
-        placeholder="Digite sua mensagem"
+        [placeholder]="copy.messagePlaceholder"
       ></textarea>
       <small
         *ngIf="
           demoForm.controls.textarea.touched && demoForm.controls.textarea.invalid
         "
-        >Digite uma mensagem.</small
+        >{{ copy.requiredMessage }}</small
       >
     </label>
 
@@ -131,7 +127,7 @@
           class="loading-spinner"
           aria-hidden="true"
         ></span>
-        {{ (isLoading$ | async) ? "Enviando..." : "Enviar mensagem" }}
+        {{ (isLoading$ | async) ? copy.sending : copy.submit }}
         <span *ngIf="!(isLoading$ | async)" aria-hidden="true">↗</span>
       </button>
     </div>

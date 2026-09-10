@@ -6,52 +6,54 @@
     </a>
 
     <div class="nav-links">
-      <a href="#integracoes">Integrações</a>
-      <a href="#aprovacoes">Aprovações</a>
-      <a href="#dashboards">Dashboards</a>
-      <a href="#auditoria">Auditoria</a>
+      <a href="#integracoes">{{ copy.nav.integrations }}</a>
+      <a href="#aprovacoes">{{ copy.nav.approvals }}</a>
+      <a href="#dashboards">{{ copy.nav.dashboards }}</a>
+      <a href="#auditoria">{{ copy.nav.audit }}</a>
     </div>
 
     <div class="nav-actions">
-      <a class="login-link" (click)="$event.preventDefault(); login()">Entrar</a>
-      <a class="demo-button" href="#demo" (click)="$event.preventDefault(); scheduleDemo()">Agendar demonstração <span aria-hidden="true">↗</span></a>
+      <a class="login-link" (click)="$event.preventDefault(); login()">{{ copy.nav.login }}</a>
+      <label class="language-picker">
+        <span class="sr-only">{{ copy.languageLabel }}</span>
+        <select [value]="language" (change)="changeLanguage($any($event.target).value)">
+          <option *ngFor="let option of languages" [value]="option.code">{{ option.label }}</option>
+        </select>
+      </label>
+      <a class="demo-button" href="#demo" (click)="$event.preventDefault(); scheduleDemo()">{{ copy.nav.demo }} <span aria-hidden="true">↗</span></a>
     </div>
   </nav>
 
   <section class="hero" id="top">
     <div class="hero-copy">
-      <p class="eyebrow"><span aria-hidden="true"></span> SAP BUSINESS ONE · SAP C4C · INTEGRAÇÃO NATIVA</p>
-      <h1>Pagamentos,<br />aprovados por<br />alçada, direto<br />do seu SAP.</h1>
-      <p class="hero-description">
-        Solicite pagamentos, adiantamentos e prestações de contas com anexo de comprovantes, aprovação por alçada com níveis customizáveis e contexto de projetos e clientes sincronizado direto do SAP C4C CRM. Tudo integrado ao SAP Business One - sem planilha no meio.
-      </p>
+      <p class="eyebrow"><span aria-hidden="true"></span> {{ copy.hero.eyebrow }}</p>
+      <h1>{{ copy.hero.title[0] }}<br />{{ copy.hero.title[1] }}<br />{{ copy.hero.title[2] }}<br />{{ copy.hero.title[3] }}</h1>
+      <p class="hero-description">{{ copy.hero.description }}</p>
       <div class="hero-actions">
-        <a class="primary-action" href="#dashboards">Solicitar um pagamento <span aria-hidden="true">↗</span></a>
-        <a class="text-action" href="#fluxo">Ver o fluxo de aprovação <span aria-hidden="true">→</span></a>
+        <a class="primary-action" href="#dashboards">{{ copy.hero.request }} <span aria-hidden="true">↗</span></a>
+        <a class="text-action" href="#fluxo">{{ copy.hero.flow }} <span aria-hidden="true">→</span></a>
       </div>
-      <div class="metrics" aria-label="Indicadores do produto">
-        <div><strong>100%</strong><span>comprovantes anexados</span></div>
-        <div><strong>100%</strong><span>alçadas customizáveis</span></div>
-        <div><strong>100%</strong><span>trilha de auditoria</span></div>
+      <div class="metrics" [attr.aria-label]="copy.hero.metrics.join(', ')">
+        <div *ngFor="let metric of copy.hero.metrics"><strong>100%</strong><span>{{ metric }}</span></div>
       </div>
     </div>
 
-    <div class="payment-board" id="aprovacoes" aria-label="Resumo de um ciclo de pagamentos">
+    <div class="payment-board" id="aprovacoes" [attr.aria-label]="copy.board.aria">
       <div class="board-header">
-        <p><span class="status-dot" aria-hidden="true"></span> CICLO DE PAGAMENTOS <b>·</b> OUT/2025</p>
-        <span class="pending-count">2 pendentes</span>
+        <p><span class="status-dot" aria-hidden="true"></span> {{ copy.board.cycle }} <b>·</b> OCT/2025</p>
+        <span class="pending-count">2 {{ copy.board.pending }}</span>
       </div>
 
       <div class="board-summary">
         <div class="summary-card">
-          <span>Este ciclo</span>
+          <span>{{ copy.board.current }}</span>
           <strong>R$ 1.284.900</strong>
-          <small>+12,4% vs SET</small>
+          <small>+12.4% {{ copy.board.previousMonth }}</small>
         </div>
         <div class="summary-card warning-card">
-          <span>Aguardando aprovação</span>
+          <span>{{ copy.board.awaiting }}</span>
           <strong>R$ 212.300</strong>
-          <small>3 aprovadores</small>
+          <small>3 {{ copy.board.approvers }}</small>
         </div>
       </div>
 
@@ -60,14 +62,14 @@
           <span class="payment-code">{{ payment.code }}</span>
           <strong>{{ payment.name }}</strong>
           <span class="payment-amount">{{ payment.amount }}</span>
-          <span class="payment-status" [class]="payment.tone">{{ payment.status }}</span>
+          <span class="payment-status" [class]="payment.tone">{{ statusLabel(payment.statusKey) }}</span>
         </div>
       </div>
 
       <div class="flow-footer" id="fluxo">
-        <span>FLUXO</span>
+        <span>{{ copy.board.flow }}</span>
         <div class="flow-steps">
-          <b>Solicitado</b><i>›</i><b>Comprovante</b><i>›</i><b class="active">Aprovação por Alçada</b><i>›</i><b>Pago</b>
+          <b>{{ copy.board.steps[0] }}</b><i>›</i><b>{{ copy.board.steps[1] }}</b><i>›</i><b class="active">{{ copy.board.steps[2] }}</b><i>›</i><b>{{ copy.board.steps[3] }}</b>
         </div>
       </div>
     </div>
@@ -76,81 +78,49 @@
   <section class="native-integrations" id="integracoes" aria-labelledby="integrations-title">
     <div class="integrations-heading">
       <div>
-        <p class="section-eyebrow">INTEGRAÇÕES NATIVAS</p>
-        <h2 id="integrations-title">Conectado aos sistemas que<br />o seu financeiro já confia.</h2>
+        <p class="section-eyebrow">{{ copy.integrations.eyebrow }}</p>
+        <h2 id="integrations-title">{{ copy.integrations.title[0] }}<br />{{ copy.integrations.title[1] }}</h2>
       </div>
-      <span class="connector-version">sincronização automática</span>
+      <span class="connector-version">{{ copy.integrations.sync }}</span>
     </div>
 
     <div class="integration-cards">
-      <article class="integration-card sap-b1-card">
+      <article *ngFor="let integration of copy.integrations.cards; let i = index" class="integration-card" [class.sap-b1-card]="i === 0" [class.sap-c4c-card]="i === 1">
         <span class="integration-mark" aria-hidden="true"></span>
-        <p class="integration-label">SAP BUSINESS ONE</p>
-        <h3>Pagamentos e fornecedores, sem retrabalho</h3>
-        <p class="integration-description">
-          Pagamentos aprovados viram documentos de pagamento no B1 automaticamente, com trilha de auditoria completa. O cadastro de fornecedores e o plano de contas continuam no B1, sem duplicidade.
-        </p>
-        <span class="integration-route">Pagamentos aprovados → SAP B1</span>
-      </article>
-
-      <article class="integration-card sap-c4c-card">
-        <span class="integration-mark" aria-hidden="true"></span>
-        <p class="integration-label">SAP CRM C4C</p>
-        <h3>Projetos e clientes, sempre atualizados</h3>
-        <p class="integration-description">
-          Projetos e contas de clientes são sincronizados automaticamente do C4C, para que cada pagamento e prestação de contas fique vinculado ao projeto, orçamento e cliente certos.
-        </p>
-        <span class="integration-route">SAP C4C → Projetos e Clientes</span>
+        <p class="integration-label">{{ integration.label }}</p>
+        <h3>{{ integration.title }}</h3>
+        <p class="integration-description">{{ integration.description }}</p>
+        <span class="integration-route">{{ integration.route }}</span>
       </article>
     </div>
   </section>
 
   <section class="embedded-modules" id="dashboards" aria-labelledby="modules-title">
     <div class="modules-heading">
-      <p class="section-eyebrow">MÓDULOS DA PLATAFORMA</p>
-      <h2 id="modules-title">Do pedido ao pagamento, num só lugar.</h2>
+      <p class="section-eyebrow">{{ copy.modules.eyebrow }}</p>
+      <h2 id="modules-title">{{ copy.modules.title }}</h2>
     </div>
 
     <div class="module-grid">
-      <article class="module-item">
-        <span class="module-number">01</span>
-        <h3>Pagamentos e fornecedores</h3>
-        <p>Solicite pagamentos a fornecedores com nota fiscal e comprovante anexados, parcelamento e forma de pagamento definidos por você.</p>
-      </article>
-      <article class="module-item">
-        <span class="module-number">02</span>
-        <h3>Aprovação por alçada</h3>
-        <p>Fluxos com níveis customizáveis por valor, aprovadores por perfil e uma decisão clara: aprovar ou devolver.</p>
-      </article>
-      <article class="module-item">
-        <span class="module-number">03</span>
-        <h3>Projetos e clientes</h3>
-        <p>Projetos e contas de clientes sincronizados automaticamente do SAP C4C CRM, sempre vinculados ao pagamento certo.</p>
-      </article>
-      <article class="module-item">
-        <span class="module-number">04</span>
-        <h3>Dashboard e auditoria</h3>
-        <p>Visão consolidada de pagamentos, pendências e exceções, com trilha de auditoria integrada ao SAP Business One.</p>
+      <article class="module-item" *ngFor="let module of copy.modules.items; let i = index">
+        <span class="module-number">0{{ i + 1 }}</span>
+        <h3>{{ module[0] }}</h3>
+        <p>{{ module[1] }}</p>
       </article>
     </div>
   </section>
 
   <section class="audit-section" id="auditoria" aria-labelledby="audit-title">
-    <p class="section-eyebrow">CONFIANÇA EMPRESARIAL</p>
-    <h2 id="audit-title">A trilha de auditoria que seus<br />auditores realmente vão ler.</h2>
-    <p class="audit-description">
-      Cada pagamento, aprovação e comprovante fica registrado com usuário, papel e data. Login por JWT, permissões por papel (perfis e alçadas) e histórico de sessões ativos desde o primeiro dia.
-    </p>
-    <div class="audit-tags" aria-label="Recursos de segurança">
-      <span>Autenticação JWT</span>
-      <span>Permissões por papel</span>
-      <span>Comprovantes anexados</span>
-      <span>Hospedado no Brasil</span>
+    <p class="section-eyebrow">{{ copy.audit.eyebrow }}</p>
+    <h2 id="audit-title">{{ copy.audit.title[0] }}<br />{{ copy.audit.title[1] }}</h2>
+    <p class="audit-description">{{ copy.audit.description }}</p>
+    <div class="audit-tags" [attr.aria-label]="copy.audit.tags.join(', ')">
+      <span *ngFor="let tag of copy.audit.tags">{{ tag }}</span>
     </div>
   </section>
 
   <footer class="demo-footer">
-    <span>&copy; 2026 Opportunity. Todos os direitos reservados.</span>
-    <span>Pagamentos integrados ao seu SAP.</span>
+    <span>{{ copy.footer.copyright }}</span>
+    <span>{{ copy.footer.tagline }}</span>
   </footer>
 </main>

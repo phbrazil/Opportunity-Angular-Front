@@ -1,0 +1,163 @@
+export type DemoLanguage = 'pt' | 'en' | 'es';
+
+export const DEMO_LANDING_COPY = {
+  pt: {
+    languageLabel: 'Idioma',
+    nav: { integrations: 'Integrações', approvals: 'Aprovações', dashboards: 'Dashboards', audit: 'Auditoria', login: 'Entrar', demo: 'Agendar demonstração' },
+    hero: {
+      eyebrow: 'SAP BUSINESS ONE · SAP C4C · INTEGRAÇÃO NATIVA',
+      title: ['Pagamentos,', 'aprovados por', 'alçada, direto', 'do seu SAP.'],
+      description: 'Solicite pagamentos, adiantamentos e prestações de contas com anexo de comprovantes, aprovação por alçada com níveis customizáveis e contexto de projetos e clientes sincronizado direto do SAP C4C CRM. Tudo integrado ao SAP Business One - sem planilha no meio.',
+      request: 'Solicitar um pagamento',
+      flow: 'Ver o fluxo de aprovação',
+      metrics: ['comprovantes anexados', 'alçadas customizáveis', 'trilha de auditoria'],
+    },
+    board: {
+      aria: 'Resumo de um ciclo de pagamentos',
+      cycle: 'CICLO DE PAGAMENTOS',
+      pending: 'pendentes',
+      current: 'Este ciclo',
+      awaiting: 'Aguardando aprovação',
+      approvers: 'aprovadores',
+      previousMonth: 'vs SET',
+      flow: 'FLUXO',
+      steps: ['Solicitado', 'Comprovante', 'Aprovação por Alçada', 'Pago'],
+      statuses: { approved: 'Aprovado', pending: 'Pendente', escalated: 'Escalado' },
+    },
+    integrations: {
+      eyebrow: 'INTEGRAÇÕES NATIVAS',
+      title: ['Conectado aos sistemas que', 'o seu financeiro já confia.'],
+      sync: 'sincronização automática',
+      cards: [
+        { label: 'SAP BUSINESS ONE', title: 'Pagamentos e fornecedores, sem retrabalho', description: 'Pagamentos aprovados viram documentos de pagamento no B1 automaticamente, com trilha de auditoria completa. O cadastro de fornecedores e o plano de contas continuam no B1, sem duplicidade.', route: 'Pagamentos aprovados → SAP B1' },
+        { label: 'SAP CRM C4C', title: 'Projetos e clientes, sempre atualizados', description: 'Projetos e contas de clientes são sincronizados automaticamente do C4C, para que cada pagamento e prestação de contas fique vinculado ao projeto, orçamento e cliente certos.', route: 'SAP C4C → Projetos e Clientes' },
+      ],
+    },
+    modules: {
+      eyebrow: 'MÓDULOS DA PLATAFORMA',
+      title: 'Do pedido ao pagamento, num só lugar.',
+      items: [
+        ['Pagamentos e fornecedores', 'Solicite pagamentos a fornecedores com nota fiscal e comprovante anexados, parcelamento e forma de pagamento definidos por você.'],
+        ['Aprovação por alçada', 'Fluxos com níveis customizáveis por valor, aprovadores por perfil e uma decisão clara: aprovar ou devolver.'],
+        ['Projetos e clientes', 'Projetos e contas de clientes sincronizados automaticamente do SAP C4C CRM, sempre vinculados ao pagamento certo.'],
+        ['Dashboard e auditoria', 'Visão consolidada de pagamentos, pendências e exceções, com trilha de auditoria integrada ao SAP Business One.'],
+      ],
+    },
+    audit: {
+      eyebrow: 'CONFIANÇA EMPRESARIAL',
+      title: ['A trilha de auditoria que seus', 'auditores realmente vão ler.'],
+      description: 'Cada pagamento, aprovação e comprovante fica registrado com usuário, papel e data. Login por JWT, permissões por papel (perfis e alçadas) e histórico de sessões ativos desde o primeiro dia.',
+      tags: ['Autenticação JWT', 'Permissões por papel', 'Comprovantes anexados', 'Hospedado no Brasil'],
+    },
+    footer: { copyright: '© 2026 Opportunity. Todos os direitos reservados.', tagline: 'Pagamentos integrados ao seu SAP.' },
+    modal: {
+      eyebrow: 'OPPORTUNITY · DEMONSTRAÇÃO', title: 'Agende uma demonstração', subtitle: 'Conte um pouco sobre você e nossa equipe entrará em contato.', close: 'Fechar', name: 'Nome', namePlaceholder: 'Seu nome', company: 'Empresa', companyPlaceholder: 'Nome da empresa', email: 'Email', emailPlaceholder: 'email@dominio.com', phone: 'Telefone', phonePlaceholder: '(00) 00000-0000', subject: 'Assunto', subjectPlaceholder: 'Selecione...', subjects: ['Automação de pagamentos', 'Integração com SAP', 'Fluxo de aprovação', 'Outro assunto'], message: 'Mensagem', messagePlaceholder: 'Digite sua mensagem', submit: 'Enviar mensagem', sending: 'Enviando...', requiredName: 'Informe seu nome.', requiredCompany: 'Informe sua empresa.', requiredEmail: 'Informe um e-mail válido.', requiredPhone: 'Informe seu telefone.', requiredSubject: 'Selecione um assunto.', requiredMessage: 'Digite uma mensagem.', successTitle: 'Obrigado', successMessage: 'Em breve entraremos em contato', errorTitle: 'Ocorreu um erro', errorMessage: 'Por favor tente novamente mais tarde',
+    },
+  },
+  en: {
+    languageLabel: 'Language',
+    nav: { integrations: 'Integrations', approvals: 'Approvals', dashboards: 'Dashboards', audit: 'Audit', login: 'Log in', demo: 'Book a demo' },
+    hero: {
+      eyebrow: 'SAP BUSINESS ONE · SAP C4C · NATIVE INTEGRATION',
+      title: ['Payments,', 'approved by', 'authorization level,', 'straight from SAP.'],
+      description: 'Request payments, advances and expense reports with attached receipts, configurable approval levels, and projects and clients synchronized directly from SAP C4C CRM. All integrated with SAP Business One, with no spreadsheet in between.',
+      request: 'Request a payment',
+      flow: 'See the approval flow',
+      metrics: ['receipts attached', 'customizable approval levels', 'audit trail'],
+    },
+    board: {
+      aria: 'Payment cycle summary',
+      cycle: 'PAYMENT CYCLE',
+      pending: 'pending',
+      current: 'This cycle',
+      awaiting: 'Awaiting approval',
+      approvers: 'approvers',
+      previousMonth: 'vs SEP',
+      flow: 'FLOW',
+      steps: ['Requested', 'Receipt', 'Approval by Level', 'Paid'],
+      statuses: { approved: 'Approved', pending: 'Pending', escalated: 'Escalated' },
+    },
+    integrations: {
+      eyebrow: 'NATIVE INTEGRATIONS',
+      title: ['Connected to the systems', 'your finance team trusts.'],
+      sync: 'automatic sync',
+      cards: [
+        { label: 'SAP BUSINESS ONE', title: 'Payments and vendors, without the rework', description: 'Approved payments automatically become payment documents in B1, with a complete audit trail. Vendor records and the chart of accounts stay in B1, without duplication.', route: 'Approved payments → SAP B1' },
+        { label: 'SAP CRM C4C', title: 'Projects and clients, always up to date', description: 'Projects and client accounts sync automatically from C4C, so every payment and expense report stays tied to the right project, budget and client.', route: 'SAP C4C → Projects and Clients' },
+      ],
+    },
+    modules: {
+      eyebrow: 'PLATFORM MODULES',
+      title: 'From request to payment, in one place.',
+      items: [
+        ['Payments and vendors', 'Request vendor payments with invoices and receipts attached, installments, and payment method defined by you.'],
+        ['Approval by level', 'Workflows with customizable thresholds, role-based approvers, and a clear decision: approve or return.'],
+        ['Projects and clients', 'Projects and client accounts synchronized from SAP C4C CRM, always linked to the right payment.'],
+        ['Dashboard and audit', 'A consolidated view of payments, pending items and exceptions, with an audit trail integrated into SAP Business One.'],
+      ],
+    },
+    audit: {
+      eyebrow: 'ENTERPRISE TRUST',
+      title: ['The audit trail your', 'auditors will actually read.'],
+      description: 'Every payment, approval and receipt is logged with user, role and date. JWT login, role-based permissions and session history are active from day one.',
+      tags: ['JWT authentication', 'Role-based permissions', 'Receipts attached', 'Hosted in Brazil'],
+    },
+    footer: { copyright: '© 2026 Opportunity. All rights reserved.', tagline: 'Payments integrated with your SAP.' },
+    modal: {
+      eyebrow: 'OPPORTUNITY · DEMO', title: 'Book a demo', subtitle: 'Tell us a little about yourself and our team will get in touch.', close: 'Close', name: 'Name', namePlaceholder: 'Your name', company: 'Company', companyPlaceholder: 'Company name', email: 'Email', emailPlaceholder: 'email@domain.com', phone: 'Phone', phonePlaceholder: '+1 555 000 0000', subject: 'Subject', subjectPlaceholder: 'Select...', subjects: ['Payment automation', 'SAP integration', 'Approval workflow', 'Other subject'], message: 'Message', messagePlaceholder: 'Write your message', submit: 'Send message', sending: 'Sending...', requiredName: 'Enter your name.', requiredCompany: 'Enter your company.', requiredEmail: 'Enter a valid email.', requiredPhone: 'Enter your phone number.', requiredSubject: 'Select a subject.', requiredMessage: 'Enter a message.', successTitle: 'Thank you', successMessage: 'We will contact you soon', errorTitle: 'An error occurred', errorMessage: 'Please try again later',
+    },
+  },
+  es: {
+    languageLabel: 'Idioma',
+    nav: { integrations: 'Integraciones', approvals: 'Aprobaciones', dashboards: 'Dashboards', audit: 'Auditoría', login: 'Ingresar', demo: 'Agendar demostración' },
+    hero: {
+      eyebrow: 'SAP BUSINESS ONE · SAP C4C · INTEGRACIÓN NATIVA',
+      title: ['Pagos,', 'aprobados por', 'nivel de autorización,', 'directo desde SAP.'],
+      description: 'Solicite pagos, anticipos y rendiciones con comprobantes adjuntos, niveles de aprobación configurables y proyectos y clientes sincronizados directamente desde SAP C4C CRM. Todo integrado con SAP Business One, sin planillas de por medio.',
+      request: 'Solicitar un pago',
+      flow: 'Ver el flujo de aprobación',
+      metrics: ['comprobantes adjuntos', 'niveles configurables', 'trazabilidad de auditoría'],
+    },
+    board: {
+      aria: 'Resumen de un ciclo de pagos',
+      cycle: 'CICLO DE PAGOS',
+      pending: 'pendientes',
+      current: 'Este ciclo',
+      awaiting: 'Esperando aprobación',
+      approvers: 'aprobadores',
+      previousMonth: 'vs SEP',
+      flow: 'FLUJO',
+      steps: ['Solicitado', 'Comprobante', 'Aprobación por Nivel', 'Pagado'],
+      statuses: { approved: 'Aprobado', pending: 'Pendiente', escalated: 'Escalado' },
+    },
+    integrations: {
+      eyebrow: 'INTEGRACIONES NATIVAS',
+      title: ['Conectado a los sistemas', 'en los que finanzas confía.'],
+      sync: 'sincronización automática',
+      cards: [
+        { label: 'SAP BUSINESS ONE', title: 'Pagos y proveedores, sin retrabajo', description: 'Los pagos aprobados se convierten automáticamente en documentos de pago en B1, con trazabilidad completa. Los proveedores y el plan de cuentas siguen en B1, sin duplicidad.', route: 'Pagos aprobados → SAP B1' },
+        { label: 'SAP CRM C4C', title: 'Proyectos y clientes, siempre actualizados', description: 'Los proyectos y las cuentas de clientes se sincronizan automáticamente desde C4C, para que cada pago y rendición quede vinculado al proyecto, presupuesto y cliente correctos.', route: 'SAP C4C → Proyectos y Clientes' },
+      ],
+    },
+    modules: {
+      eyebrow: 'MÓDULOS DE LA PLATAFORMA',
+      title: 'Del pedido al pago, en un solo lugar.',
+      items: [
+        ['Pagos y proveedores', 'Solicite pagos a proveedores con facturas y comprobantes adjuntos, cuotas y forma de pago definida por usted.'],
+        ['Aprobación por nivel', 'Flujos con niveles configurables por valor, aprobadores por perfil y una decisión clara: aprobar o devolver.'],
+        ['Proyectos y clientes', 'Proyectos y cuentas de clientes sincronizados desde SAP C4C CRM, siempre vinculados al pago correcto.'],
+        ['Dashboard y auditoría', 'Vista consolidada de pagos, pendientes y excepciones, con trazabilidad integrada a SAP Business One.'],
+      ],
+    },
+    audit: {
+      eyebrow: 'CONFIANZA EMPRESARIAL',
+      title: ['La trazabilidad que sus', 'auditores realmente leerán.'],
+      description: 'Cada pago, aprobación y comprobante queda registrado con usuario, rol y fecha. Inicio de sesión por JWT, permisos por rol e historial de sesiones activos desde el primer día.',
+      tags: ['Autenticación JWT', 'Permisos por rol', 'Comprobantes adjuntos', 'Alojado en Brasil'],
+    },
+    footer: { copyright: '© 2026 Opportunity. Todos los derechos reservados.', tagline: 'Pagos integrados con su SAP.' },
+    modal: {
+      eyebrow: 'OPPORTUNITY · DEMOSTRACIÓN', title: 'Agende una demostración', subtitle: 'Cuéntenos un poco sobre usted y nuestro equipo se pondrá en contacto.', close: 'Cerrar', name: 'Nombre', namePlaceholder: 'Su nombre', company: 'Empresa', companyPlaceholder: 'Nombre de la empresa', email: 'Correo electrónico', emailPlaceholder: 'correo@dominio.com', phone: 'Teléfono', phonePlaceholder: '+52 55 0000 0000', subject: 'Asunto', subjectPlaceholder: 'Seleccione...', subjects: ['Automatización de pagos', 'Integración con SAP', 'Flujo de aprobación', 'Otro asunto'], message: 'Mensaje', messagePlaceholder: 'Escriba su mensaje', submit: 'Enviar mensaje', sending: 'Enviando...', requiredName: 'Ingrese su nombre.', requiredCompany: 'Ingrese su empresa.', requiredEmail: 'Ingrese un correo válido.', requiredPhone: 'Ingrese su teléfono.', requiredSubject: 'Seleccione un asunto.', requiredMessage: 'Ingrese un mensaje.', successTitle: 'Gracias', successMessage: 'Nos pondremos en contacto pronto', errorTitle: 'Ocurrió un error', errorMessage: 'Por favor, inténtelo de nuevo más tarde',
+    },
+  },
+} as const;
