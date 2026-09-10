@@ -1,37 +1,90 @@
 <div class="demo-modal" role="dialog" aria-labelledby="demo-modal-title">
   <div class="modal-heading">
     <div>
-      <p class="eyebrow">OPPORTUNITY <span aria-hidden="true"></span> DEMONSTRAÇÃO</p>
+      <p class="eyebrow">
+        OPPORTUNITY <span aria-hidden="true"></span> DEMONSTRAÇÃO
+      </p>
       <h2 id="demo-modal-title">Agende uma demonstração</h2>
-      <p class="modal-subtitle">Conte um pouco sobre você e nossa equipe entrará em contato.</p>
+      <p class="modal-subtitle">
+        Conte um pouco sobre você e nossa equipe entrará em contato.
+      </p>
     </div>
-    <button type="button" class="close-button" aria-label="Fechar" (click)="close()">&times;</button>
+    <button
+      type="button"
+      class="close-button"
+      aria-label="Fechar"
+      (click)="close()"
+    >
+      &times;
+    </button>
   </div>
 
   <form [formGroup]="demoForm" (ngSubmit)="submit()" novalidate>
     <div class="field-grid">
       <label class="field">
         <span>Nome</span>
-        <input type="text" formControlName="name" placeholder="Seu nome" autocomplete="name" />
-        <small *ngIf="demoForm.controls.name.touched && demoForm.controls.name.invalid">Informe seu nome.</small>
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Seu nome"
+          autocomplete="name"
+        />
+        <small
+          *ngIf="
+            demoForm.controls.name.touched && demoForm.controls.name.invalid
+          "
+          >Informe seu nome.</small
+        >
       </label>
 
       <label class="field">
         <span>Empresa</span>
-        <input type="text" formControlName="company" placeholder="Nome da empresa" autocomplete="organization" />
-        <small *ngIf="demoForm.controls.company.touched && demoForm.controls.company.invalid">Informe sua empresa.</small>
+        <input
+          type="text"
+          formControlName="company"
+          placeholder="Nome da empresa"
+          autocomplete="organization"
+        />
+        <small
+          *ngIf="
+            demoForm.controls.company.touched &&
+            demoForm.controls.company.invalid
+          "
+          >Informe sua empresa.</small
+        >
       </label>
 
       <label class="field">
         <span>Email</span>
-        <input type="email" formControlName="email" placeholder="email@dominio.com" autocomplete="email" />
-        <small *ngIf="demoForm.controls.email.touched && demoForm.controls.email.invalid">Informe um e-mail válido.</small>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="email@dominio.com"
+          autocomplete="email"
+        />
+        <small
+          *ngIf="
+            demoForm.controls.email.touched && demoForm.controls.email.invalid
+          "
+          >Informe um e-mail válido.</small
+        >
       </label>
 
       <label class="field">
         <span>Telefone</span>
-        <input type="phone" formControlName="phone" placeholder="(00) 00000-0000" autocomplete="tel" />
-        <small *ngIf="demoForm.controls.phone.touched && demoForm.controls.phone.invalid">Informe seu telefone.</small>
+        <input
+          type="phone"
+          formControlName="phone"
+          placeholder="(00) 00000-0000"
+          autocomplete="tel"
+          mask="(00) 00000-0000"
+        />
+        <small
+          *ngIf="
+            demoForm.controls.phone.touched && demoForm.controls.phone.invalid
+          "
+          >Informe seu telefone.</small
+        >
       </label>
     </div>
 
@@ -44,19 +97,41 @@
         <option value="approval-flow">Fluxo de aprovação</option>
         <option value="other">Outro assunto</option>
       </select>
-      <small *ngIf="demoForm.controls.subject.touched && demoForm.controls.subject.invalid">Selecione um assunto.</small>
+      <small
+        *ngIf="
+          demoForm.controls.subject.touched && demoForm.controls.subject.invalid
+        "
+        >Selecione um assunto.</small
+      >
     </label>
 
     <label class="field full-width">
       <span>Mensagem</span>
-      <textarea formControlName="message" rows="4" placeholder="Digite sua mensagem"></textarea>
-      <small *ngIf="demoForm.controls.message.touched && demoForm.controls.message.invalid">Digite uma mensagem.</small>
+      <textarea
+        formControlName="message"
+        rows="4"
+        placeholder="Digite sua mensagem"
+      ></textarea>
+      <small
+        *ngIf="
+          demoForm.controls.message.touched && demoForm.controls.message.invalid
+        "
+        >Digite uma mensagem.</small
+      >
     </label>
 
     <div class="modal-actions">
-      <button type="submit" class="submit-button" [disabled]="demoForm.invalid || (isLoading$ | async)">
-        <span *ngIf="isLoading$ | async" class="loading-spinner" aria-hidden="true"></span>
-        {{ (isLoading$ | async) ? 'Enviando...' : 'Enviar mensagem' }}
+      <button
+        type="submit"
+        class="submit-button"
+        [disabled]="demoForm.invalid || (isLoading$ | async)"
+      >
+        <span
+          *ngIf="isLoading$ | async"
+          class="loading-spinner"
+          aria-hidden="true"
+        ></span>
+        {{ (isLoading$ | async) ? "Enviando..." : "Enviar mensagem" }}
         <span *ngIf="!(isLoading$ | async)" aria-hidden="true">↗</span>
       </button>
     </div>
