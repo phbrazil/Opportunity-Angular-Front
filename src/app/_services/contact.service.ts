@@ -7,7 +7,7 @@ import { Contact } from '../_models/contact';
   providedIn: 'root',
 })
 export class ContactService {
-  private apiUrl = 'http://mci.opportunity-web.com.br:8081/mci/contact-us';
+  private apiUrl = 'http://mci.opportunity-web.com.br:8081/contact-us';
   //private apiUrl = 'http://localhost:8080/mci/contact-us';
 
   constructor(private http: HttpClient) {}
