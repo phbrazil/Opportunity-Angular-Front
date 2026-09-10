@@ -40,6 +40,10 @@ export class DemoLandingPageComponent {
   }
 
   scheduleDemo() {
-    this.dialog.open(DemoRequestModalComponent);
+    this.dialog.open(DemoRequestModalComponent, {
+      width: 'calc(100% - 32px)',
+      maxWidth: '790px',
+      maxHeight: 'calc(100vh - 24px)',
+    });
   }
 }

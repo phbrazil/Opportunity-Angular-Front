@@ -1,0 +1,14 @@
+<svg width="240" height="240" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="gradRingOnly2" gradientUnits="userSpaceOnUse" x1="30" y1="20" x2="170" y2="160">
+<stop offset="0%" stop-color="#1D4ED8"/>
+<stop offset="50%" stop-color="#7C3AED"/>
+<stop offset="100%" stop-color="#D946EF"/>
+</linearGradient>
+</defs>
+<g transform="translate(10,0)">
+<rect x="30.00" y="84.00" width="34.00" height="114.00" rx="17.00" ry="17.00" fill="#4C3FE0"/>
+<path d="M 30,90 A 70,70 0 1,0 170,90 A 70,70 0 1,0 30,90 Z M 64,90 A 36,36 0 1,0 136,90 A 36,36 0 1,0 64,90 Z" fill="url(#gradRingOnly2)" fill-rule="evenodd"/>
+</g>
+
+</svg>

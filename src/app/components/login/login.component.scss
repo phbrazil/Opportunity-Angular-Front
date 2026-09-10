@@ -10,8 +10,12 @@
   font-family: 'Gilroy-Bold', sans-serif;
 }
 
-.logo{
+.logo {
+  width: 32px;
+  height: 32px;
   margin-right: 10px;
+  object-fit: contain;
+  vertical-align: middle;
 }
 
 .glass{
